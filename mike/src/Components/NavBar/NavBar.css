@@ -1,0 +1,101 @@
+/* body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color:#020815;
+    color: #e0e0e0; 
+} */
+.Navbarheader {    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color:#020815; /* Dark background */
+    padding: 10px 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-radius:10px;
+    animation: slideDown 0.7s ease-out;
+}
+
+/* Navbar List */
+.Navbarlist {
+    width:80%;
+    display: flex;
+    list-style: none;
+    gap: 25px;
+    font-size: 20px;
+    font-weight: 500;
+    justify-content: space-evenly;
+    margin: 0;
+    padding: 0;
+}
+
+.Navbarlist li {
+    position: relative;
+    color: #e0e0e0;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.Navbarlist li::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(#00c6ff, #0072ff);
+    transition:0.4s ease;
+    border-radius: 2px;
+}
+.Navbarlist li:hover {
+    color: #00c6ff;
+}
+.Navbarlist li:hover::after {
+    width: 90%;
+}
+.ProfileOut {   
+    width: 40px;
+    height: 100%;
+    gap: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ProfileIn {
+    width: 40px;
+    height: 40px;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 2px solid #00c6ff;
+    color: #00c6ff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 0 8px rgba(0, 198, 255, 0.5);
+}
+
+.ProfileIn:hover {
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
+    color: #fff;
+    transform: scale(1.15) rotate(8deg);
+    box-shadow: 0 0 15px rgba(0, 198, 255, 0.9);
+}
+
+/* Animations */
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

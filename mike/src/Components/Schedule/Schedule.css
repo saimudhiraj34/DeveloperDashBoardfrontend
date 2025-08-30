@@ -1,0 +1,46 @@
+.schedule-container {
+  width: 90%;
+  margin: 20px auto;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.schedule-table th,
+.schedule-table td {
+  border: 1px solid #00c6ff;
+  padding: 10px;
+}
+
+.schedule-table th {
+  background-color: #00c6ff;
+  color: #fff;
+}
+
+.schedule-table td {
+  background-color: #010f23;
+  color: #00c6ff;
+}
+.buttons {
+margin-top: 20px;
+  color: #010f23;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size:30px;
+  margin-top: 20px;
+
+
+}
+.download-button {
+  height: 40px;
+  width:120px;
+  margin-left: 30px;
+  cursor: pointer;
+
+ 
+}

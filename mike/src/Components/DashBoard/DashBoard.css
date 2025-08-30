@@ -1,0 +1,233 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background:black; /* dark navy */
+    font-family: Arial, sans-serif;
+}
+
+button{
+    background-color: #00c6ff;
+}
+.DashBoard-progress{
+    background-color: #00c6ff;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.ProgressOut{
+    width: 100%;
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+    
+    
+}
+.ProgressIn{
+    width:50%;
+    height:100%;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    position: relative;
+}
+.ProgressBox{
+    width:550px;
+    height: 180px;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #010f23;;
+}
+.ProgressHead{
+    background-color:#010f23;
+    display: flex;
+    justify-content: center;
+    font-size:25px;
+    font-family: 'Trebuchet MS', Helvetica, sans-serif;
+}
+.ProgressBoxCircle{
+    width: 180px;
+    height:170px;
+    border-radius: 50%;
+    border: 2px solid #00c6ff;
+    display: flex;
+    align-items: center;
+    margin-right: 20px; 
+   
+}
+.ProgressBoxText{
+    width: 340px;
+    height: 170px;
+    flex-direction: column;
+    align-items: center;
+    font-size: large;
+    justify-content: center;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+.ProgressPer{
+   width: 100%;
+   display: flex;
+   justify-content: space-between;
+}
+.percentage {
+  width: 100%;
+  height:10px;        /* height for the bar container */
+  background:#010f23; /* light background so it’s visible */
+  border-radius: 5px;
+  margin: 5px 0;       /* spacing between bars */
+}
+
+.inpercentage {
+  height: 100%;
+  width: 0;            /* default */
+  background: #00c6ff; /* progress fill color */
+  border-radius: 5px;
+  animation: percentage 2s forwards; /* animation to fill the bar */
+}
+@keyframes percentage {
+    from { width: 0; }
+    to { width: 80%; }    
+}
+.PreparationHead{
+    height:60px;
+    display: flex;
+    justify-content: center;
+}
+
+.DashBoardout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height:240px;
+   width:98%;
+   padding: 20px;
+    
+    overflow-x: auto;
+    scrollbar-width: none; /* Firefox */
+}
+.DashBoardout::-webkit-scrollbar {
+  display: none;
+}
+.DashBoardIn {
+    width: 100%;
+    height: auto;
+    display: flex;
+    background-color:#010f23;
+    align-items: center;
+    justify-content: flex-start; 
+    padding:20px;
+    gap: 50px;
+    scroll-behavior: smooth; 
+}
+ 
+.circle-progress {
+  width:190px;
+  height:200px;
+  border-radius: 50%;
+  background-color: #00c6ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+position: relative;
+  transition: background 1s ease;
+}
+
+/* Inner circle to create ring effect */
+.circle-progress::before {
+  content: '';
+  position: absolute;
+  width: 180px;
+  height:180px;
+  background-color: #121212; /* dark inner circle */
+  border-radius: 50%;
+}
+
+/* Text inside circle */
+.circle-inner {
+  position: absolute;
+  color: #00c6ff;
+  font-weight: bold;
+  text-align: center;
+  font-size: 16px;
+  height: 180px;
+  display: flex;
+  align-items: center;
+}
+
+.percentage {
+  margin-top: 5px;
+  font-size: 14px;
+  color: #fff;
+}
+.ProjectHead{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.ProjectBoxOut{
+    width: 100%;
+    height:240px;
+    display: flex;
+    padding: 5px;
+    overflow-y: scroll;
+    scrollbar-width: none; /* Firefox */
+}
+.ProjectBoxIn{
+    width:40%;
+    height: 100%;   
+    display: flex;  
+    margin-left: 10px;
+}
+/* .ProjectImage{
+    width:40%;
+    height:100%;
+    border: 2px solid #00c6ff;
+
+} */
+.ProjectText{
+    width:100%;
+    background: #010f23;
+    border-radius:30px;
+    height:100%;
+    border: 2px solid #00c6ff;
+    display: flex;
+    flex-direction: column;
+    font-size:20px;
+   font-family: Verdana, Geneva, sans-serif;
+    gap:5px;
+    overflow: scroll;
+    scrollbar-width: none; /* Firefox */
+   /* align-items: center; */
+    /* justify-content: space-between; */
+}
+.ProjectBoxNav{
+    padding-top:5px;
+    padding-bottom: 5px;
+    display: flex;
+    justify-content:space-evenly;
+    align-items: center;
+    width: 100%;
+    height:40px;
+    /* border: 2px solid #00c6ff; */
+    display: flex;  
+}
+.ProjectButton{
+    width: 120px;
+    height: 40px;
+    border-radius: 20px;
+    background-color:black;
+    color:#fff;
+    font-size: large;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+

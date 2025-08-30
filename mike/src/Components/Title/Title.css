@@ -1,0 +1,10 @@
+.TitleOuter{
+    height:80px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size:50px;
+    color: #00c6ff ;
+    font-family:Arial, Helvetica, sans-serif
+}

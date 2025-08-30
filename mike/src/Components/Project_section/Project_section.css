@@ -1,0 +1,171 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color:black;
+  color:white;
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  width:90%;
+  margin: 0 auto;
+  text-align: center;
+
+  /* Firefox */
+}
+
+h1 {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+p.subtitle {
+  font-size: 1em;
+  color:white;
+  margin-bottom: 40px;
+}
+
+.progress-container {
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  margin-bottom: 40px;
+  
+}
+
+
+.progress-container::before{  
+  content: '';
+  position: absolute;
+  top: 25px;
+  left:25px;
+  right:25px;
+  height: 4px;
+  background-color:white; /* light gray */
+  color:white;
+  font-size: large;
+    z-index: 0;
+  border-radius: 2px; 
+ } 
+
+/* Green line showing progress dynamically */
+.progress-container::after{
+  content: '';
+  position: absolute;
+  top: 25px;
+  height: 4px;
+  background-color: #28a745; /* green */
+  z-index: 0;
+  border-radius: 2px;
+  width: var(--progress-width, 0); /* dynamic width */
+   transition: width 4s ease; 
+ } 
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width:20%;
+  z-index: 1;
+  position: relative;
+}
+
+.step .circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.step.completed .circle {
+  background-color: #28a745;
+}
+
+.step.in-progress .circle {
+  background-color: #007bff;
+}
+
+.step p {
+  margin: 2px 0;
+  font-size: 0.9em;
+  color:white;
+}
+
+.step .label {
+  font-weight: bold;
+  color: white;
+}
+.step .description {
+
+  color:white;
+}
+.step .status {
+  display: inline-block;
+  margin-top: 5px;
+  background-color: #007bff;
+  color: white;
+  font-size: 0.7em;
+  padding: 2px 6px;
+  border-radius: 12px;
+}
+
+.features {
+  text-align: left;
+  background-color: black;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+}
+
+.features h2 {
+  margin-top: 0;
+}
+
+.features ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.features li {
+  margin-bottom: 10px;
+  padding-left: 25px;
+  position: relative;
+}
+
+.features li::before {
+  content: '✔';
+  position: absolute;
+  left: 0;
+  color: #28a745;
+}
+.features li:nth-child(2)::before {
+  content: '⚙'; /* gear icon for customization */
+  color: #007bff;
+}
+.progress-container-out {
+  display: flex;
+  flex-wrap: wrap; 
+   justify-content: center;  /* Horizontal scroll */
+  width: 100%;
+}
+
+.progress-container-inner {
+  border: 2px solid #00c6ff; 
+  margin-right: 20px;
+  width:760px;   
+  margin-top:10px;    /* fixed width so it won't shrink */
+  flex-shrink: 0;     /* prevents shrinking */
+}
+#go-to{
+  height: 20px;
+  width: 100px;
+  border-radius: none;
+}
