@@ -1,0 +1,193 @@
+
+
+.form-container {
+  height:80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.project-form {
+  width: 100%;
+  max-width: 800px;
+  background: #212020;
+  border: 4px solid white;
+  border-radius: 16px;
+  padding: 32px;
+
+  box-shadow: 0 0px 24px #00c6ff;
+  color: #f1f1f1;
+}
+
+.form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.form-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.form-subtitle {
+  font-size: 13px;
+  color: #888;
+  margin-top: 4px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.full-width {
+  grid-column: span 2;
+}
+
+.form-label {
+  font-size: 14px;
+  color: #ccc;
+  margin-bottom: 6px;
+}
+
+.form-input,
+.form-textarea,
+.form-input option {
+  background: transparent;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 10px 14px;
+  color: #fff;
+  font-size: 14px;
+  outline: none;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  border: 1px solid #555;
+  box-shadow: 0 0 6px rgba(100, 100, 255, 0.4);
+}
+
+.form-textarea {
+  resize: vertical;
+}
+
+.feature-input-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.features-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.feature-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 20px;
+  padding: 6px 12px;
+  font-size: 13px;
+  color: #eee;
+}
+
+.btn-remove {
+  background: none;
+  border: none;
+  color: #aaa;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.btn-remove:hover {
+  color: #ff5c5c;
+}
+
+.form-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 24px;
+}
+
+.form-status {
+  font-size: 13px;
+  color: #999;
+}
+
+.status-value {
+  color: #fff;
+  font-weight: 500;
+}
+
+.form-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.btn-reset,
+.btn-save,
+.btn-add {
+  border-radius: 8px;
+  padding: 8px 16px;
+  border: 1px solid #333;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.btn-reset {
+  background: transparent;
+  color: #ddd;
+}
+
+.btn-reset:hover {
+  background: #111;
+}
+
+.btn-save {
+  background: linear-gradient(to right, #4f46e5, #9333ea);
+  border: none;
+  color: #fff;
+  font-weight: 500;
+}
+
+.btn-save:hover {
+  opacity: 0.9;
+}
+
+.btn-add {
+  background: #222;
+  color: #ddd;
+  border: 1px solid #444;
+}
+
+.btn-add:hover {
+  background: #333;
+}
+
+@media screen and (max-width: 768px){
+    .project-form{
+     display: flex;
+     flex-direction: column;
+     justify-content: flex-start;
+     overflow:scroll;
+     }
+  
+}

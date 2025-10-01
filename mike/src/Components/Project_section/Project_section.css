@@ -1,10 +1,11 @@
-body {
+/* body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color:black;
+  height: 100%;
   color:white;
   margin: 0;
   padding: 20px;
-}
+} */
 
 .container {
   width:90%;
@@ -46,7 +47,7 @@ p.subtitle {
   background-color:white; /* light gray */
   color:white;
   font-size: large;
-    z-index: 0;
+  z-index: 0;
   border-radius: 2px; 
  } 
 
@@ -168,4 +169,153 @@ p.subtitle {
   height: 20px;
   width: 100px;
   border-radius: none;
+}
+.project_add_btn button{
+  font-size: large;
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 20px;
+  text-align: center;
+}
+.sub-ans-btn{
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 10px;
+}
+.phase-tracker {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+  position: relative;
+}
+
+/* Base gray line */
+.progress-line {
+  position: absolute;
+  top: 10px; /* align with circles */
+  left: 0;
+  right: 0;
+  height: 4px;
+  background-color: #ccc;
+  z-index: 0;
+  border-radius: 2px;
+}
+
+/* Green progress line */
+.progress-line-fill {
+  position: absolute;
+  top: 10px; /* align with circles */
+  left: 0;
+  height: 4px;
+  background-color: #28a745; /* green */
+  z-index: 1; /* above gray line */
+  border-radius: 2px;
+  transition: width 0.5s ease-in-out;
+}
+.phase-tracker {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+  position: relative;
+}
+
+/* Base gray line */
+.progress-line {
+  position: absolute;
+  top: 30px; /* align with circles */
+  left: 0;
+  right: 0;
+  height: 4px;
+  background-color: #ccc;
+  z-index: 0;
+  border-radius: 2px;
+}
+
+/* Green progress line */
+.progress-line-fill {
+  position: absolute;
+  top: 30px; /* align with circles */
+  left: 0;
+  height: 4px;
+  background-color: #28a745; /* green */
+  z-index: 1; /* above gray line */
+  border-radius: 2px;
+  transition: width 0.5s ease-in-out;
+}
+
+/* Circle indicators */
+.phase {
+  text-align: center;
+  flex: 1;
+  position: relative;
+  z-index: 2; /* above green line */
+}
+
+.phase .circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin: auto;
+  background: #ccc;
+  border: 2px solid #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.phase.completed .circle {
+  background: green;
+  border-color: green;
+  border: 2px solid white;
+}
+
+.phase.current .circle {
+  background: orange;
+  border-color: orange;
+}
+
+.phase.in-progress .circle {
+  background:rgb(17, 190, 228);
+ 
+}
+
+.phase p {
+  margin-top: 5px;
+  font-size: 14px;
+}
+.projectdeletebtn{
+  padding: 11px;
+  width:90px;
+  border-radius:6px;
+  margin-left: 10px;
+}
+@media screen and (max-width: 768px){
+  .addprojectimg img{
+    width:400px;
+    height:400px;
+  }
+  .progress-container-out{
+    width:420px;
+  }
+.progress-container-inner{
+   width:390px;
+   overflow-y: scroll;
+}
+  .progress-container-out{
+    overflow-y: scroll;
+  }
+ .phase-tracker{
+  overflow-y: scroll;
+  display: flex;
+  justify-content:flex-start;
+ }
+
+  .progress-line-fill{
+    overflow-y: scroll;
+  }
+  .progress-line{
+    overflow-y: scroll;
+  }
 }

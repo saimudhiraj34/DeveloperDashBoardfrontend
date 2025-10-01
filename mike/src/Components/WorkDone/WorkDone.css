@@ -1,102 +1,379 @@
-/* Main Container */
-.form-container {
-  width: 600px;
-  margin: 30px auto;
-  padding: 20px;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+.WorkDone_Container{
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
 }
-
-.form-container h2 {
-  text-align: center;
-  margin-bottom: 20px;
-  color: #333;
+.WorkDone_Heading{
+  display: flex;
+  margin-bottom: 20px;  
+  width: 30%;
+  justify-content: space-between;   
 }
+.WorkDone_Heading h3 {
+  position: relative; 
+}
+.WorkDone_Heading h3::after{
+  content: "";
+  position: absolute;
+  left: 0;  
+  bottom: -6px;
+  height: 3px;
+  width: 0%;    
+  background:linear-gradient(#00c6ff, #0072ff) ;
+  transition:0.4s ease;
+  border-radius: 2px;
 
-.form-container h3 {
+}
+.WorkDone_Heading h3:hover{
+  cursor: pointer; }
+
+.WorkDone_Heading h3:hover::after{
+width: 90%;  
+
+
+}
+.WorkDone_form{
+  display: flex;
+  background-color: rgb(37, 36, 36);
+  flex-direction: column;
+  gap: 15px;
+  width: 30%;
   margin-top: 25px;
-  margin-bottom: 10px;
-  font-size: 18px;
-  color: #222;
+  height: 600px;
+  margin-left: 20px;
+  border: 2px solid #00c6ff;
+}
+.WorkDone_Today{
+  display: flex;
+  justify-content: center;
+}
+.WorkDone_table {
+  width:90%;
+  margin: 20px auto;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-/* Form Styling */
+.WorkDone_table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background:rgb(35, 34, 34);
+  color: white;
+  font-size: large;
+}
+
+.WorkDone_table thead {
+  background: linear-gradient(to right, #4f46e5, #9333ea);
+  color: #fff;
+  text-align: left;
+}
+
+.WorkDone_table th,
+.WorkDone_table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #e6e6e6;
+  text-align: left;
+}
+
+.WorkDone_table tr:hover {
+  background: #514a4a;
+  transition: 0.2s;
+}
+
+.WorkDone_table input[type="checkbox"] {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+/* Completed row */
+.WorkDone_table .completed td {
+  text-decoration: line-through;
+  color: #999;
+  background: #f5f5f5;
+}
+
+.task-form {
+  width:90%;
+  margin: 20px auto;
+  background:rgb(37, 36, 36);
+  color: white;
+  border-radius: 12px;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  font-family: Arial, sans-serif;
+}
+.task-form h1{
+  color: #00c6ff;
+}
+.form-title {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+  color: #0072ff;
+  font-weight: bold;
+}
+
 .form-group {
-  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
 }
 
 .form-group label {
-  display: block;
   font-weight: 600;
-  margin-bottom: 6px;
-  color: #444;
+  margin-bottom: 5px;
+  color:white
 }
+.work-table{
+  width:60%;
 
+}
 .form-group input,
-.form-group select,
 .form-group textarea {
-  width: 100%;
   padding: 10px;
-  border-radius: 6px;
   border: 1px solid #ccc;
+  border-radius: 6px;
   font-size: 14px;
-  transition: border 0.3s ease;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .form-group input:focus,
-.form-group select:focus,
 .form-group textarea:focus {
-  border-color: #007bff;
+  border-color: #0072ff;
   outline: none;
+  box-shadow: 0px 0px 6px rgba(0,114,255,0.3);
 }
 
 .form-group textarea {
   resize: vertical;
-  min-height: 80px;
+
 }
 
-/* Button */
-.submit-btn {
-  display: block;
-  width: 100%;
+.task-form button {
   padding: 12px;
-  background: #007bff;
-  color: #fff;
+  background: linear-gradient(90deg, #00c6ff, #0072ff);
   border: none;
   border-radius: 6px;
-  font-size: 15px;
-  font-weight: 600;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
-.submit-btn:hover {
-  background: #0056b3;
+.task-form button:hover {
+  background: linear-gradient(90deg, #0072ff, #005bb5);
+  transform: translateY(-2px);
 }
-
-/* Table */
-.data-table {
+.completed {
+  text-decoration: line-through;
+  color: gray;
+}
+.empty-state {
+  flex-direction: column;
+  display: flex;
+  width: 60%;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+}
+.empty-state p{
+ font-size: large;
+}
+/* Container for responsive table */
+.table-container {
   margin-top: 20px;
-  width: 100%;
+  overflow-x: auto;
+  display: flex;
+  justify-content: center;
+}
+
+/* Main table styling */
+.styled-table {
+  width: 80%;
   border-collapse: collapse;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  border-radius: 10px;
+  overflow: hidden;
 }
 
-.data-table th,
-.data-table td {
-  border: 1px solid #ddd;
-  padding: 12px;
-  text-align: center;
-  font-size: 14px;
+/* Table header */
+.styled-table thead {
+  background-color: #4a90e2;
+  color: #ffffff;
+  text-align: left;
+}
+
+.styled-table th,
+.styled-table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #e0e0e0;
+  font-size:23px;
+}
+
+/* Zebra stripes for rows */
+
+
+/* Hover effect */
+.styled-table tbody tr:hover {
+  background-color: #424546;
+  transition: 0.3s;
+}
+
+/* Completed row styling */
+.styled-table tbody tr.completed {
+  text-decoration: line-through;
   color: black;
+  font-size:20px;
+  background-color: #f5f5f5;
 }
 
-.data-table th {
-  background: #007bff;
-  color: #fff;
+.WorkDone_completed{
+  display: flex;
+  justify-content: center;
+}
+/* Container for All Completed Tasks */
+.WorkDone_completed.actived{
+    color: #00c6ff;
 }
 
-.data-table tr:nth-child(even) {
-  background: #f2f2f2;
+/* Heading */
+.WorkDone_All_completed h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 28px;
+  color:white;
+}
+
+/* Flex container for all tasks */
+.tasks-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* space between boxes */
+  justify-content: center;
+}
+.date-box h2{
+  display: flex;
+  justify-content: center;
+}
+/* Individual task box */
+.task-item {
+  background-color: white;
+  border-radius: 10px;
+  padding: 15px;
+  width: 220px; /* fixed width for card */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  border: 4px solid  #00c6ff;
+}
+
+.task-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Task topic */
+.task-item p strong {
+  font-size: 16px;
+  color:  #00c6ff;
+  margin-bottom: 5px;
+  font-size: larger;
+}
+
+/* Task time */
+.task-item p:nth-child(2) {
+  font-size: 14px;
+  color: #000000;
+  margin-bottom: 5px;
+}
+
+/* Task notes */
+.task-notes {
+  font-size: 14px;
+  font-style: italic;
+  color: #121212;
+  margin-bottom: 10px;
+  font-size: large;
+}
+
+/* Status text */
+.status {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.status.done {
+  color: green;
+}
+
+.status.pending {
+  color: orange;
+}
+
+/* Empty state */
+.empty-state {
+  text-align: center;
+  padding: 50px;
+  color: #000000;
+}
+
+.empty-state img {
+ margin-top: 140px;
+
+  opacity: 0.7;
+}
+
+
+/* Optional: adjust table scroll on small screens */
+@media (max-width: 768px) {
+  .styled-table th, .styled-table td {
+    padding: 10px;
+  }
+
+  .empty-state img {
+    width: 300px;
+    height: 300px;
+  }
+
+  .WorkDone_Today {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .WorkDone_form {
+    width: 100%;   /* let it adapt */
+    max-width: 380px;
+  }
+
+  .WorkDone_Container {
+    width: 100%;   /* full width on mobile */
+    display: flex;
+    justify-content: center;
+  }
+
+  .WorkDone_Heading {
+    width: 100%;   /* full width */
+    max-width: 390px;
+  }
+.WorkDone_table{
+  width:650px;
+}
+  /* Table fix */
+  .work-table {
+    width:98%;              /* take full mobile width */
+    overflow-x: auto;         /* allow horizontal scroll */
+    -webkit-overflow-scrolling: touch; /* smooth scroll on iOS */
+    display: block;           /* ensure scroll works */
+  }
+
+  .styled-table {
+    min-width: 480px; /* keep columns readable */
+  }
 }

@@ -1,152 +1,317 @@
 import React from "react";
 import "./DashBoard.css";
-import { Title } from "../Title/Title";
-import { NavBar } from "../NavBar/NavBar";
+import NavBar from "../NavBar/NavBar";
+import Title from "../Title/Title";
+import { useState } from "react";
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 
-export const DashBoard = () => {
 
-  const progressSections = [
-    {
-      heading: "Skills",
-      items: ["Java", "Python", "JavaScript", "WebDevelopment", "WebDevelopment"],
-    },
-    {
-      heading: "Core",
-      items: ["ComputerSystems", "Operating System", "DBMS", "Machine Learning", "GitHub", "Power BI"],
-    },
-    {
-      heading: "Plaforms",
-      items: ["Leetcode", "GeeksForGeeks", "CodeChef", "Vscode [Manual]"],
-    },
-  ];
+const DashBoard = () => {
+  const navigate = useNavigate();
+  const [menuOpen, setMenuOpen] = useState(false);
 
-  const preparationItems = [
-    "Java Preparation",
-    "Python Preparation",
-    "JavaScript Preparation",
-    "Operating_Systems Preparation",
-    "Computer_Systems Preparation",
-    "Java Preparation",
-    "Java Preparation",
-    "Java Preparation",
-  ];
+  const [progressSections, setProgressSections] = useState([]);
+
 
   // Projects data
-  const projects = [
-    {
-      title: "Grocery_Store",
-      diagramLink: "#",
-      status: "COMPLETED",
-      startEnd: "20-8-2025 END:-25-8-2025",
-      goal:
-        "finding the solution for storing the goods efficent,tracking credituser,out_0f_stock,highSelling",
-    },
-    {
-      title: "Grocery_Store",
-      diagramLink: "#",
-      status: "COMPLETED",
-      startEnd: "20-8-2025 END:-25-8-2025",
-      goal:
-        "finding the solution for storing the goods efficent,tracking credituser,out_0f_stock,highSelling",
-    },
-    {
-      title: "Grocery_Store",
-      diagramLink: "#",
-      status: "COMPLETED",
-      startEnd: "20-8-2025 END:-25-8-2025",
-      goal:
-        "finding the solution for storing the goods efficent,tracking credituser,out_0f_stock,highSelling",
-    },
-  ];
+  const [projects, setProjects] = useState([]);
+  const fetchProjects = async () => {
+    try {
+      const res = await fetch("http://localhost:3000/project/get", {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+      const data = await res.json();
+
+      setProjects(Array.isArray(data) ? data : []);
+    } catch (err) {
+      navigate("/");
+      console.error("Error fetching projects:", err);
+    }
+  };
+  useEffect(() => {
+    fetchProjects();
+  }, []);
+  const fetchDashboard = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      const res = await fetch("http://localhost:3000/syllabus/all_skills", {
+        method: "GET",
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      const resData = await res.json();
+
+      const syllabus = resData.data;
+
+      if (syllabus?.categories) {
+        const sections = await Promise.all(
+          Object.entries(syllabus.categories).map(async ([heading, items]) => {
+            const itemsWithCount = await Promise.all(
+              items.map(async (item) => {
+                const { completed, total } = await getItemCountForItem(item);
+                return { name: item, completed, total };
+              })
+            );
+            const sectionTotal = itemsWithCount.reduce(
+              (sum, item) => sum + item.total,
+              0
+            );
+            return { heading, items: itemsWithCount, sectionTotal };
+          })
+        );
+
+        setProgressSections(sections);
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const getItemCountForItem = async (item) => {
+    try {
+      const token = localStorage.getItem("token");
+      const res = await fetch(`http://localhost:3000/questions/${item}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      if (!res.ok) return { completed: 0, total: 0 };
+
+      const data = await res.json();
+      const questions = data.questions || [];
+      const total = data.totalQuestions || questions.length;
+      const completed = questions.filter((q) => q.status).length;
+
+      return { completed, total };
+    } catch (err) {
+      console.error("Error fetching item count", err);
+      return { completed: 0, total: 0 };
+    }
+  };
+
+  useEffect(() => {
+    fetchDashboard();
+  }, []);
 
   return (
     <>
-    <div className="body">
-      <Title />
-      <NavBar />
+      <ToastContainer position="top-center" autoClose={3000} />
+      <div className="body">
+        <Title />
+        <NavBar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
 
-      <div className="ProgressOut">
-        {progressSections.map((section, idx) => (
-          <div key={idx} className="ProgressIn">
-            <div className="Progress">
-              <div className="ProgressHead">
-                <div>{section.heading}</div>
+        {/* Hamburger button */}
+  
+        <div className="Progress-box-out">
+          <div className="ProgressOut">
+            {progressSections.length > 0 ? (
+              progressSections.map((section, idx) => (
+                
+                <div key={idx} className="ProgressIn">
+                  <div className="Progress">
+                    <div className="ProgressHead">
+                      <div>{section.heading}</div>
+                    </div>
+                    <div className="ProgressBox">
+                      <div className="ProgressBoxCircle">
+                        <svg className="progress-ring" width="180" height="180">
+                          <circle
+                            className="progress-ring__background"
+                            stroke="#eee"
+                            strokeWidth="10"
+                            fill="transparent"
+                            r="85"
+                            cx="90"
+                            cy="90"
+                          />
+                          <circle
+                            className="progress-ring__circle"
+                            stroke="#00c6ff"
+                            strokeWidth="10"
+                            fill="transparent"
+                            r="85"
+                            cx="90"
+                            cy="90"
+                            strokeDasharray={2 * Math.PI * 80}
+                            strokeDashoffset={
+                              2 *
+                              Math.PI *
+                              80 *
+                              (1 -
+                                section.items.reduce(
+                                  (a, i) => a + i.completed,
+                                  0
+                                ) /
+                                  section.sectionTotal)
+                            }
+                          />
+                        </svg>
+                        <div className="progress-ring__text">
+                          {section.items.reduce((a, i) => a + i.completed, 0)}/
+                          {section.sectionTotal}
+                        </div>
+                      </div>
+
+                      <div className="ProgressBoxText">
+                        {section.items.map((itemObj, index) => (
+                          <React.Fragment key={index}>
+                            <div className="ProgressPer">
+                              <div className="JavaProgess">{itemObj.name}</div>
+                              <div className="ProgressScore">
+                                {itemObj.completed}/{itemObj.total}
+                              </div>
+                            </div>
+                            <div className="percentage">
+                              <div
+                                className="inpercentage"
+                                style={{
+                                  width:
+                                    itemObj.total > 0
+                                      ? `${
+                                          (itemObj.completed / itemObj.total) *
+                                          100
+                                        }%`
+                                      : "0%",
+                                }}
+                              ></div>
+                            </div>
+                          </React.Fragment>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <div className="pro-empty-state">
+                <h2>No preparation data available | Add Categories To See </h2>
               </div>
-              <div className="ProgressBox">
-                <div className="ProgressBoxCircle"></div>
-                <div className="ProgressBoxText">
-                  {section.items.map((item, index) => (
-                    <React.Fragment key={index}>
-                      <div className="ProgressPer">
-                        <div className="JavaProgess">{item}</div>
-                        <div className="ProgressScore">28/100</div>
-                      </div>
-                      <div className="percentage">
-                        <div className="inpercentage"></div>
-                      </div>
-                    </React.Fragment>
-                  ))}
+            )}
+          </div>
+        </div>
+
+        <div className="PreparationHead">
+          <h2 className="PreparationTitle">Preparation</h2>
+        </div>
+        <div className="DashBoardout-box">
+          <div className="DashBoardout">
+            <div className="DashBoardIn">
+              {progressSections.some((section) =>
+                section.items.some((item) => item.completed)
+              ) ? (
+                progressSections.map((section, sIdx) =>
+                  section.items
+                    .filter((item) => item.completed > 0)
+                    .map((item, iIdx) => {
+                      const svgSize = 210; // outer SVG width/height
+                      const strokeWidth = 24;
+                      const radius = (svgSize - strokeWidth) / 2;
+                      const circumference = 2 * Math.PI * radius;
+                      const progressFraction =
+                        Number(item.completed) / Number(item.total);
+                      const strokeDashoffset =
+                        circumference * (1 - progressFraction);
+
+                      return (
+                        <div
+                          className="DashBoard-progress"
+                          key={`${sIdx}-${iIdx}`}
+                        >
+                          <div
+                            className="circle-progress"
+                            style={{ width: svgSize, height: svgSize }}
+                          >
+                            <svg width={svgSize} height={svgSize}>
+                              {/* Background circle */}
+                              <circle
+                                stroke="white"
+                                strokeWidth={10}
+                                fill="transparent"
+                                r={radius}
+                                cx={svgSize / 2}
+                                cy={svgSize / 2}
+                              />
+                              {/* Progress circle */}
+                              <circle
+                                stroke="#00c6ff"
+                                strokeWidth={10}
+                                background="transparent"
+                                fill="transparent"
+                                r={radius}
+                                cx={svgSize / 2}
+                                cy={svgSize / 2}
+                                strokeDasharray={circumference}
+                                strokeDashoffset={strokeDashoffset}
+                                style={{
+                                  transition: "stroke-dashoffset 1s ease",
+                                }}
+                              />
+                            </svg>
+
+                            <div className="circle-inner">
+                              {item.name}
+                              <div className="circle-progress-text">
+                                {item.total > 0
+                                  ? `${Math.round(
+                                      (item.completed / item.total) * 100
+                                    )}%`
+                                  : "0%"}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })
+                )
+              ) : (
+                <div className="pro-empty-state">
+                  <h2>
+                    No preparation data available || complete the questions in
+                    each Subject
+                  </h2>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+
+        <div className="ProjectHead">
+          <h2 className="ProjectTitle">Projects</h2>
+        </div>
+        <div className="ProjectBoxOut">
+          {projects.length > 0 ? (
+            projects.map((project, idx) => (
+              <div key={idx} className="ProjectBoxIn">
+                <div className="ProjectText">
+                  <div className="ProjectBoxNav">
+                    <div className="project-title">
+                      <b>{project.projectTitle}</b>
+                    </div>
+                    <button className="ProjectButton">
+                      <div className="ProjectComplete">Status:✅</div>
+                    </button>
+                  </div>
+                  <div>{project.description}</div>
+                  <div className="project-progress-btn">
+                    <Link to={`/Project_detail/${project.projectTitle}`}>
+                      <button>Get_Details</button>
+                    </Link>
+                  </div>
                 </div>
               </div>
+            ))
+          ) : (
+            <div className="pro-empty-state">
+              <h2>No projects available || Add Projects To See</h2>
             </div>
-          </div>
-        ))}
-      </div>
-
-      <div className="PreparationHead">
-        <h1 className="PreparationTitle">Preparation</h1>
-      </div>
-      <div className="DashBoardout">
-        <div className="DashBoardIn">
-          {preparationItems.map((prep, idx) => (
-            <button className="DashBoard-progress"key={idx}>
-              <div className="circle-progress">
-                <div className="circle-inner">{prep}</div>
-              </div>
-            </button>
-          ))}
+          )}
         </div>
-      </div>
-
-      <div className="ProjectHead">
-        <h1 className="ProjectTitle">Projects</h1>
-      </div>
-      <div className="ProjectBoxOut">
-        {projects.map((project, idx) => (
-          <div key={idx} className="ProjectBoxIn">
-            <div className="ProjectText">
-              <div className="ProjectBoxNav">
-                Details
-                <button className="ProjectButton">
-                  <div className="ProjectComplete">InProgress</div>
-                </button>
-                <button className="ProjectButton">
-                  <div className="ProjectComplete">Status:✅</div>
-                </button>
-              </div>
-              <div>
-                <strong>Title:-</strong>
-                {project.title}
-              </div>
-              <div>
-                <strong>Raw_Diagram/Structure </strong>
-                <a href={project.diagramLink}>Link</a>
-              </div>
-              <div>
-                <strong>STATUS:-</strong>
-                {project.status}
-              </div>
-              <div>
-                <strong>START:-</strong> {project.startEnd}
-              </div>
-              <div>
-                <strong>project_goal</strong>:-{project.goal}
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
       </div>
     </>
   );
 };
+export default DashBoard;

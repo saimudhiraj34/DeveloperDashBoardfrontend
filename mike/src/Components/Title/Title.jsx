@@ -1,11 +1,11 @@
 import React from 'react'
 import './Title.css'
 
-export const Title = () => {
+const Title = () => {
   return (
     <div className='TitleOuter'>
-        <div>Developer DashBoard</div>
-
+        <div className='TitleInner'>Developer DashBoard</div>
     </div>
   )
 }
+export  default Title;

@@ -1,0 +1,115 @@
+.imp-dates-container {
+  display: flex;
+  padding: 20px;
+  width: 100%;
+}
+.calendar-container {
+   display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+   width: 30%;
+   height:60vh;
+}
+.calendar-container h2 strong{
+  color:rgb(32, 169, 190)
+}
+.mini-calendar {
+  width: 380px;  
+  height: 380px;       /* Small width */
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 5px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  background:black;
+}
+
+/* Shrink font sizes */
+.react-calendar {
+  font-size:25px;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+}
+
+.react-calendar__navigation button {
+  font-size: 24px;
+ 
+}
+
+.react-calendar__tile {
+  padding: 10px 10px;
+}
+.notifications-container {
+  flex: 1;
+  margin-left: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  background:black;
+  height:80vh;
+  overflow-y: auto;
+}
+.notifications-list{
+  display: flex;
+  flex-wrap: wrap;
+  width:100%;
+  gap: 20px;
+}
+.notifications-action-btn{
+  display: flex;
+  justify-content: center;
+  gap:50px;
+}
+.notifications-action-btn h2{
+  color: #00c6ff;
+}
+.notification-box{
+  background: white;
+  width: 20%;
+  height:150px;
+  color: black;
+  padding: 15px;
+  border-radius: 8px;
+  border:  4px solid  #00c6ff;  margin-bottom: 15px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+.notification-box p{
+  font-size: larger;
+}
+.notification-box:hover{
+  background-color: rgb(147, 148, 150);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+}
+.notification-btn{
+  background: rgb(32, 169, 190);
+  border: none;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.notification-img{
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .imp-dates-container{
+    display: flex;
+    flex-direction: column;
+  }
+  .calendar-container{
+    width: 400px;
+  }
+  .notifications-container{
+    margin-left: 0px;
+    width:350px;
+  }
+  .notification-box{
+    width: 200px;
+  }
+}

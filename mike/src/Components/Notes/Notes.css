@@ -1,0 +1,101 @@
+.notes-container{
+    display: flex;
+    width: 100%;
+    height: 80vh;
+}
+.notes-sidebar{
+    width:500px;
+    height:90vh;
+    background-color: #282727;
+    overflow-y: scroll;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.notes-sidebar h3{
+    color:white;
+    font-size: 30px;
+}
+.notename{
+    padding: 10px;
+    width: 80%;
+    height: 30px;
+    font-size: larger;
+    border-radius: 5px;
+}
+.notes-input{
+    display: flex;
+    gap: 10px;
+}
+.notes-sidebar button{
+    padding: 10px;
+    width: 60px;
+    border-radius: 5px;
+    font-size: larger;
+}
+.notes-area{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px;
+}
+.notes-out{
+    width: 80%;
+    height: 80vh;
+}
+.notes-description-box{
+    width: 100%;
+    height:70%;
+    font-size:25px;
+
+}
+.note-item button{
+    margin-top:15px;
+    border-radius:8px;
+    width:80%;
+    font-size: larger;
+    font-style: oblique;
+    padding: 10px;
+}
+.note-item{
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+   
+    margin-bottom: 10px;
+   
+    
+   
+}
+.notes-out button{
+    padding: 10px;
+    width: 120px;
+    font-size: larger;
+}
+.notes-list{
+    background-color: black;
+    width: 100%;
+    margin-top: 10px;
+    
+}
+FaTrash{
+    size: 20px;
+}
+@media screen and (max-width: 768px){
+    .notes-sidebar{
+        width: 100%;
+        height: auto; 
+           
+    }
+    .notes-list{
+        display: flex;
+        overflow-y: scroll;
+        justify-content: flex-start;
+    }
+    .notes-container{
+        width: 100%;
+        flex-direction: column;
+        height: auto;  /* Avoid cutting content */
+    }
+}
+

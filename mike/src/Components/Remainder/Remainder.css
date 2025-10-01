@@ -1,0 +1,262 @@
+.remainder-container {
+   display: flex ;
+  
+}
+.remainder-input-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height:70vh;
+    gap: 15px;
+    width:40%;
+    margin: 20px;
+    padding: 20px;
+    background-color: #1e1e1e;
+    border-radius: 8px;
+   
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.remainder-tabs{
+  display: flex;
+  gap: 20px;
+  font-size: 25px;
+
+}
+.remainder-alarm {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;  
+    padding: 20px;
+    gap: 10px;
+    width: 80%;
+    height:300px;
+    border-radius: 5px;
+    border: 2px solid #00c6ff;
+    margin-bottom: 20px;
+}
+.remainder-input-container h1 strong  {
+    color: #00c6ff;
+    text-align: center;
+} 
+.remainder-input-container form{
+    display: flex;
+    width:50%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.remainder-input-remainder:hover{
+    cursor: pointer;
+  
+}
+.remainder-input-remainder {
+    position: relative;
+}
+.remainder-input-remainder::after{
+    content: "";
+    position: absolute;
+    left: 0;  
+    bottom: -6px;
+    height: 3px;
+    width: 0%;    
+    background:linear-gradient(#00c6ff, #0072ff) ;
+    transition:0.8s ease;
+    border-radius: 2px;
+}
+.remainder-input-remainder:hover::after{
+    width: 100%;  
+}
+.remainder-alarm input{
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: #494545;
+    color: white;
+}
+.remainder-alarm button{
+    padding: 20px;
+    width: 200px;
+    font-size: large;
+    border-radius:5px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+.remainder-alarm button:hover{
+    cursor: pointer;
+    background: linear-gradient(90deg, #00c6ff, #0072ff);
+    color: white;
+    border: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease;
+}   
+/* 
+Container for switch */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  margin-left: 10px;
+}
+
+/* Hide default checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: red;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+/* Slider circle */
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+/* Checked state */
+input:checked + .slider {
+  background-color: green;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+.remainder-display{
+  display: flex;
+
+  justify-content: center;
+  width: 60%;  
+}
+.remainder-list {
+  display: flex;
+  flex-wrap: wrap; /* allow multiple rows */
+  gap: 10px;       /* spacing between items */
+  width: 100%;
+  height:100vh;
+  overflow-y: auto;
+  justify-content: flex-start; /* align items to start of row */
+}
+
+
+.remainder-item{
+  background-color: #1e1e1e;
+  border: 2px solid #00c6ff;
+  border-radius: 8px;
+  padding: 15px;
+  display: flex;
+  margin: 10px;
+  width:20%;
+   flex: 0 0 200px;
+  height: 150px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.remainder-btn{
+  background: linear-gradient(90deg, #00c6ff, #0072ff);
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: medium;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.remainder-actions{
+  display: flex;
+  gap: 10px;
+}
+.date-display{
+ 
+  background-color: #1e1e1e;
+    border-radius: 8px;
+}
+.date-display{
+  height:400px;
+  width:50%;
+  border: 2px solid #00c6ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: larger;
+
+}
+
+.date-display input {
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  background-color: #494545;
+  color: white;
+  margin-bottom: 10px;
+}
+.date-display button{
+  padding: 15px;
+  width: 150px;
+  font-size: large;
+  border-radius:5px;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  margin-top: 20px;
+}
+.date-display button:hover{
+  cursor: pointer;
+  background: linear-gradient(90deg, #00c6ff, #0072ff);
+  color: white;
+  border: none;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s ease;
+}
+.dates-set{
+  font-size:30px;
+}
+.dates-set strong{
+  margin-left: 10px;
+  color:#00c6ff;
+}
+.activeRemainder{
+  color: #00c6ff;
+}
+@media screen and (max-width: 768px){
+.remainder-container{
+    display: flex;
+    flex-direction: column;
+}
+.remainder-input-container{
+  width:389px;
+}
+.remainder-alarm{
+  width: 300px;
+}
+.date-display{
+  width: 300px;
+
+}
+}

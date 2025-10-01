@@ -1,0 +1,98 @@
+/* Container alignment */
+.react-calendar-heatmap {
+  width: 1600px;
+  margin: 20px auto;
+  background: gray; 
+  color: black;/* light grey background */
+  padding: 15px;
+  border-radius: 10px;
+}
+
+/* Each day square */
+.react-calendar-heatmap .react-calendar-heatmap-day {
+  width: 12px;   /* smaller square */
+  height: 12px;
+  rx: 2;         /* rounded corners */
+  ry: 2;
+  shape-rendering: crispEdges;
+  cursor: pointer;
+}
+
+/* Empty day (no activity) */
+
+
+
+/* Hover effect */
+.react-calendar-heatmap .react-calendar-heatmap-day:hover {
+  stroke: #333;
+  stroke-width: 1px;
+}
+.calendar{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.profile-card {
+  width: 380px;
+  padding: 16px;
+  margin: 20px auto;
+  border-radius: 12px;
+  background: #f9f9f9;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+.profile-card h1{
+    color: #13628d;
+}
+.profile-name {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 6px;
+  color: #222;
+}
+
+.profile-branch {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 12px;
+}
+
+.profile-links a {
+  margin: 0 10px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  background: #0073b1; /* default LinkedIn color */
+  color: white;
+  transition: background 0.2s ease;
+}
+
+.profile-links a:first-child {
+  background: #333; /* GitHub black */
+}
+
+.profile-links a:hover {
+  opacity: 0.8;
+}
+.color-empty {
+  fill: #eeeeee;
+}
+
+.color-scale-1 {
+  fill: #b3ecff; /* very light cyan */
+}
+
+.color-scale-2 {
+  fill: #66ddff; /* light cyan */
+}
+
+.color-scale-3 {
+  fill: #33cfff; /* medium cyan */
+}
+
+.color-scale-4 {
+  fill: #00c6ff; /* main bright cyan */
+}
+

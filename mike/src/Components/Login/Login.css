@@ -1,0 +1,311 @@
+body{
+    background-color: black;
+}
+.Login-container{
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color:rgba(25, 24, 24, 0.534);
+}
+.stronglogin{
+    color: #00c6ff;
+    margin-right:10px;
+}
+.loginh2{
+    color: #323232;
+    margin-right: 10px;
+}
+.info-text h3{
+    margin-top:0;
+}
+.info-text.register{
+    margin-top:140px;  
+    margin-left:50px;  
+
+}
+.btn{
+    padding:10px;
+    }
+.btn:hover{
+    background-color: #00c6ff;
+    color: black;
+}
+.Wrapper{
+    width: 1150px;
+    height:650px;
+    display: flex;
+    border: 4px solid beige;
+    position: relative;
+    overflow: hidden;
+    background:black;
+    justify-content: space-between;
+    overflow: hidden;
+    box-shadow:0 0 30px #00c6ff;
+    
+}
+.Wrapper .form-box{
+    position:absolute;
+    top:0;
+    width: 50%;
+    height:90%;
+    background-color: transparent;
+    z-index:2;
+    display:flex;
+    justify-content: center;
+    flex-direction: column;   
+      
+}
+.registerbtn{
+    padding:5px;
+    background-color:#1122e1;
+    color: white;
+    font-size: larger;
+    border-radius: 10px;
+    border: 2px solid black;
+}
+.info-text {
+   height: 100%;
+
+   margin-right: 20px;
+
+}
+.form-box.login{
+    left: 0;
+    padding-left:40px;
+    padding-right: 40px;
+
+    /* display: none;   */
+}
+.form-box.login h2{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center;
+}
+.Wrapper .form-box.register{
+    right:0;    
+  
+}
+.Wrapper .form-box.login .animation{
+    transform: translateX(0);
+    transition: 0.4s ease;
+    transition-delay:calc(.1s *var(--i)) ;
+}
+.Wrapper.active .form-box.login .animation{
+    transform: translateX(-120%);
+    transition-delay: calc(.1s *var(--i));
+}
+.Wrapper .info-text.login.animation.active {
+    transform: translateX(120%);
+    transition-delay: calc(.1s *var(--i));
+}
+.Wrapper .info-text.login.animation{
+    transition-delay: calc(.1s *var(--i));
+    transition: 0.9s ease;
+   
+}
+.Wrapper .form-box.register .animation{
+  transform: translateX(120%);
+  transition: .4s ease;
+  
+ 
+}
+.Wrapper.active .form-box.register .animation{
+  transform: translateX(0);
+  transition-delay:calc(.1s *var(--i)) ;
+}
+.Wrapper .info-text.register.animation{
+  transform: translateX(-120%);
+  transition:1.5s ease;
+  transition-delay:calc(.1s *var(--i)) ;
+}
+.Wrapper.active .info-text.register.animation{
+  transform: translateX(0);
+
+
+}
+.form-box h2{
+    font-size: 32px;
+    color: azure;
+    text-align: center;
+}
+.form-box .inputbox{
+    position: relative;
+    width: 100%;
+    height:50px;    
+    margin: 25px 0;}
+.inputbox input{
+    width: 80%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: large;
+    border-bottom: 2px solid #fff;  
+}
+.inputbox label{
+    position: absolute;
+    top:20%;
+    left:0;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: white;
+    pointer-events: none;
+    transition:.5s;
+     
+}
+.btn{
+   position: relative;
+   width: 80%;
+   height: 45px;
+   color: white;
+   font-size: larger;
+   background: transparent;
+   border: 2px solid skyblue;
+   outline: none;
+   cursor: pointer;
+   border-radius: 30px;
+   
+
+}
+.inputbox input:focus~label,
+.inputbox input:valid~label{
+    top:-5px;
+    color:#0ef;
+}
+.Wrapper .info-text{
+   position:absolute;
+   top:0; 
+   width: 50%;
+   height: 100%;
+
+   
+ 
+}
+.Wrapper .info-text.login{
+    right:0;
+    text-align: right;
+    margin-top:130px;
+
+}
+.Wrapper .info-text.register{
+    left:0;
+    text-align: left; 
+
+  
+}
+.info-text h2{
+    font-size: 36px;
+    color:#fff;
+    line-height: 1.3;
+    text-transform: uppercase;
+}
+.info-text p{
+    font-size: large;
+    color: white;
+
+}
+.Wrapper .bg_animate{
+    position: absolute;
+    top:-5px;
+    right: 0;
+    width: 1150px;
+    height: 900px;
+    background:#00c6ff;
+    border-bottom:3px solid #00c6ff;
+    box-shadow: 0 0 20px white;
+    border: 4px solid white;
+    transform: rotate(10deg) skewY(40deg);
+    transform-origin: bottom right;
+    transition:0.6s ease;
+}
+.Wrapper.active .bg_animate{
+    transform: rotate(0) skewY( 0);
+    
+}
+.Wrapper .bg_animate2{
+    position: absolute;
+    top:160%;
+    left:170px;
+    width: 1350px;
+    height:1910px;
+    background:#081b29;
+    border-top:3px solid #00c6ff;
+    transform: rotate(0) skewY(0);
+     box-shadow: 0 0 20px white;
+    border: 4px solid white;
+    transform-origin: bottom left;
+    transition:0.4s ease;
+}
+.Wrapper.active .bg_animate2{
+     transform: rotate(-7deg) skewY(-50deg);
+     transition-delay: 0.2s;
+}
+.register-btn{
+    text-decoration: none;
+}
+.register-btn{
+    padding: 10px;
+    background-color: #00c6ff;
+    font-size: large;
+    border-radius:8px;
+    color: black;
+   }
+.register-btn:hover{
+    box-shadow: 0 0 0px #00c6ff;
+}
+@media screen and (max-width: 768px)  {
+     .Wrapper{
+         background-color: #00c6ff;
+     }
+      .Wrapper .bg_animate{
+          background:black
+      }
+      .Wrapper .bg_animate2{
+        background-color: #00c6ff;
+      }
+      .info-text.login{
+        display: none;
+      }
+      .info-text.register{
+        display: none;
+      }
+      .Wrapper.active .form-box.login{
+        left:-70px;
+        transition: 0.5s ease;
+      }
+     .form-box.login{
+       padding-left: 140px;
+     }     
+    
+       .Wrapper.active .form-box.register{
+          left: 0;
+          margin-left: 70px;
+          transition: 0.8s ease;
+       }
+    
+      .form-box form{
+          align-items: center;
+      }
+      .animation p{
+        margin-top: 20px;
+      }
+     .Wrapper.active{
+        right: 0;
+     }
+     .Wrapper.active .form-box.register .animation{
+  transform: translateX(0);
+  transition-delay:calc(.0s *var(--i)) ;
+}
+.Wrapper .info-text.register.animation{
+  transform: translateX(-120%);
+
+  transition-delay:calc(.0s *var(--i)) ;
+}
+
+    
+}

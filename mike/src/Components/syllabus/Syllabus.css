@@ -1,16 +1,40 @@
-.syllabus-container {
-    width: 100%;
+.syllabus-container{
+     width: 100%;
      display: flex;
      justify-content: center ;
 }
-.subjects-container{
+.subjects-container {
     width: 100%;
     display: flex;
-    padding-left: 20px;
+    justify-content: flex-start;  /* ✅ allow natural left alignment */
+    gap: 20px;
+    overflow-x:scroll;             /* auto is better than scroll */
+    scrollbar-width: none;
+    padding: 20px;
+    white-space: nowrap;          /* ✅ prevent children from wrapping */
+}
 
+.subjects-container::-webkit-scrollbar {
+  display: none;
+}
+
+.syllabus-input{
+    width:100%;
+    display: flex;
+    height: 40px;
+    justify-content: center;
+    margin-bottom: 20px;
+    border-radius:12px;
+}
+.syllabus-input-name{
+    width: 300px;
+    height: 45px;
+    padding: auto;
+    margin-right: 30px;
+    font-size: larger;
 }
 .Skills{
-    width:300px;
+    width:400px;
     border: 2px solid white;
     height:100%
 }
@@ -18,15 +42,16 @@
    display: flex;
     justify-content: center;
     width: 100%;
-    height: 25px;
+    height:40px;
 }
 .buttons{
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
+
 .button{
-    background-color: blue;
+    background-color: #0c62cb;
     color: white;
     border-radius: 5px;
     margin: 10px;
@@ -38,4 +63,59 @@
     display: flex;
     justify-content: center;
     margin-top: 20px;
+}
+.syllabus-h2{
+   width:100%;
+   display:flex;
+   justify-content: center;
+   margin-top:20px;
+}
+.syllabus-delete-input{
+    width: 100%;
+    display:flex;
+    justify-content: center;
+    gap: 10px;
+}
+.delete-input{
+    padding:15px;
+    font-size: larger;
+    border-radius: 10px;
+  
+}
+.syllabus-button-btn{
+    width: 100px;
+    height:50px;
+    font-size: larger;
+}
+.syllabus-button-btn2{
+    width: 200px;
+    height: 45px;
+    font-size: larger;
+}
+@media screen and (max-width: 768px) {
+    .syllabus-input{
+        display: flex;
+        justify-content: flex-start;
+    }    .subjects-container{
+        display: flex;
+        justify-content: flex-start;
+        width:480px;
+        overflow-y: scroll;
+    }
+    .Skills{
+        padding: 10px;
+        font-size: large;
+    }
+    .Skills button{
+        font-size: large;
+    }
+    .syllabus-button-btn{
+        display: flex;
+        justify-content: flex-start;
+    }
+    .syllabus-delete-input{
+        display: flex;
+        justify-content: flex-start;
+    }
+  
 }
