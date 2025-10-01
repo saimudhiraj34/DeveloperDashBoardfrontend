@@ -3,6 +3,7 @@ import NavBar from "../NavBar/NavBar";
 import Title from "../Title/Title";
 import "./Remainder.css";
 import { ToastContainer, toast } from 'react-toastify';
+import { API_BASE_URL } from "../../config";
 
  const Remainder = () => {
   const [remainderList, setRemainderList] = useState([]);
@@ -39,7 +40,7 @@ import { ToastContainer, toast } from 'react-toastify';
     
   try {
     const token = localStorage.getItem("token");
-    const res = await fetch("http://localhost:3000/imp/send", {
+    const res = await fetch(`${API_BASE_URL}/imp/send`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -64,7 +65,7 @@ import { ToastContainer, toast } from 'react-toastify';
     setRemainderList(updatedList);
     try {
     const token = localStorage.getItem("token");
-    const res = await fetch("http://localhost:3000/remainder/update_status", {
+    const res = await fetch(`${API_BASE_URL}/remainder/update_status`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -96,7 +97,7 @@ import { ToastContainer, toast } from 'react-toastify';
 
     const token = localStorage.getItem("token");
     try {
-      const res = await fetch("http://localhost:3000/remainder/set", {
+      const res = await fetch(`${API_BASE_URL}/remainder/set`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -127,7 +128,7 @@ import { ToastContainer, toast } from 'react-toastify';
   const handleDelete = async (id) => {
     const token = localStorage.getItem("token");
     try {
-      const res = await fetch(`http://localhost:3000/remainder/delete/${id}`, {
+      const res = await fetch(`${API_BASE_URL}/remainder/delete/${id}`, {
         method: "Delete",
         headers: {
           "Content-Type": "application/json",
@@ -159,7 +160,7 @@ import { ToastContainer, toast } from 'react-toastify';
   const fetchData = async () => {
     const token = localStorage.getItem("token");
     try {
-      const resReminders = await fetch("http://localhost:3000/remainder/get", {
+      const resReminders = await fetch(`${API_BASE_URL}/remainder/get`, {
         method: "GET",
         headers: { Authorization: `Bearer ${token}` },
       });

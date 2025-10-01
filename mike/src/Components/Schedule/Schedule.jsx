@@ -4,6 +4,7 @@ import NavBar from "../NavBar/NavBar";
 import Title from "../Title/Title";
 import { useEffect } from "react";
 import { toast, ToastContainer } from "react-toastify";
+import { API_BASE_URL } from "../../config";
 
 
 
@@ -51,7 +52,7 @@ import { toast, ToastContainer } from "react-toastify";
     }));
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch("http://localhost:3000/schedule/add", {
+      const res = await fetch(`${API_BASE_URL}/schedule/add`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -86,7 +87,7 @@ import { toast, ToastContainer } from "react-toastify";
     try {
       const token = localStorage.getItem("token");
       const res = await fetch(
-        `http://localhost:3000/schedule/get/${activeDate}`,
+        `${API_BASE_URL}/get/${activeDate}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -118,7 +119,7 @@ import { toast, ToastContainer } from "react-toastify";
     }
     const token = localStorage.getItem("token");
     try {
-      const res = await fetch(`http://localhost:3000/schedule/delete/${id}`, {
+      const res = await fetch(`${API_BASE_URL}/schedule/delete/${id}`, {
         method: "Delete",
         headers: {
           "Content-Type": "application/json",

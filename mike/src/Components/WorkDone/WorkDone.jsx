@@ -7,6 +7,7 @@ import { FaTrash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { ToastContainer, toast } from 'react-toastify';
+import { API_BASE_URL } from "../../config";
  const WorkDone = () => {
   
   const [active, setActive] =   useState("Today");
@@ -27,7 +28,7 @@ import { ToastContainer, toast } from 'react-toastify';
     setTaskList(updatedTaskList);
    try{
     const token=localStorage.getItem("token")
-    const res=await fetch("http://localhost:3000/work/check",{
+    const res=await fetch(`${API_BASE_URL}/work/check`,{
       method:"POST",
       headers:{
       "Content-Type":"application/json",
@@ -55,7 +56,7 @@ import { ToastContainer, toast } from 'react-toastify';
   const handleSubmit = async(e) => {
     e.preventDefault();
     const token=localStorage.getItem("token");
-     const res = await fetch("http://localhost:3000/work/task", {
+     const res = await fetch(`${API_BASE_URL}/work/task`, {
       method: "POST",
       headers: { 
         "Content-Type": "application/json" ,
@@ -77,7 +78,7 @@ import { ToastContainer, toast } from 'react-toastify';
   const fetchTasks = async () => {
     const token=localStorage.getItem("token");
   try {
-    const response = await fetch("http://localhost:3000/work/getToday",{
+    const response = await fetch(`${API_BASE_URL}/work/getToday`,{
       method:"GET",
       headers:{
       "Content-Type":"application/json",
@@ -94,7 +95,7 @@ import { ToastContainer, toast } from 'react-toastify';
   const fetchAllTasks = async () => {
     const token=localStorage.getItem("token");
   try {
-    const response = await fetch("http://localhost:3000/work/get",{
+    const response = await fetch(`${API_BASE_URL}/work/get`,{
       method:"GET",
       headers:{
       "Content-Type":"application/json",
@@ -117,7 +118,7 @@ useEffect(() => {
 const handleDelete = async(id) => {
   const token = localStorage.getItem("token");
   try {
-    const res = await fetch(`http://localhost:3000/work/task/${id}`, {
+    const res = await fetch(`${API_BASE_URL}/work/task/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

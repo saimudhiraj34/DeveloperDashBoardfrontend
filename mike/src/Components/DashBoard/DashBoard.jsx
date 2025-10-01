@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+import { API_BASE_URL } from "../../config";
 
 
 const DashBoard = () => {
@@ -20,7 +21,7 @@ const DashBoard = () => {
   const [projects, setProjects] = useState([]);
   const fetchProjects = async () => {
     try {
-      const res = await fetch("http://localhost:3000/project/get", {
+      const res = await fetch(`${API_BASE_URL}/project/get`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -40,7 +41,7 @@ const DashBoard = () => {
   const fetchDashboard = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch("http://localhost:3000/syllabus/all_skills", {
+      const res = await fetch(`${API_BASE_URL}/syllabus/all_skills`, {
         method: "GET",
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -76,7 +77,7 @@ const DashBoard = () => {
   const getItemCountForItem = async (item) => {
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch(`http://localhost:3000/questions/${item}`, {
+      const res = await fetch(`${API_BASE_URL}/questions/${item}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (!res.ok) return { completed: 0, total: 0 };

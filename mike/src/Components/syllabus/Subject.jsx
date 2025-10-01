@@ -5,7 +5,7 @@ import NavBar from "../NavBar/NavBar";
 import Title from "../Title/Title";
 import { useEffect } from "react";
 import { ToastContainer, toast } from 'react-toastify';
-
+import { API_BASE_URL } from "../../config";
  const Subject = () => {
   const { sub } = useParams();
   const [questions, setQuestions] = useState([]);
@@ -16,7 +16,7 @@ import { ToastContainer, toast } from 'react-toastify';
   const fetchQuestions = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch(`http://localhost:3000/questions/${sub}`, {
+      const res = await fetch(`${API_BASE_URL}/questions/${sub}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -54,7 +54,7 @@ import { ToastContainer, toast } from 'react-toastify';
     setQuest("");
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch("http://localhost:3000/questions/add_question", {
+      const res = await fetch(`${API_BASE_URL}/questions/add_question`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -87,7 +87,7 @@ import { ToastContainer, toast } from 'react-toastify';
     setQuestions(ansupdate);
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch("http://localhost:3000/questions/save_answer", {
+      const res = await fetch(`${API_BASE_URL}/questions/save_answer`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -111,7 +111,7 @@ import { ToastContainer, toast } from 'react-toastify';
     try {
       const token = localStorage.getItem("token");
       const res = await fetch(
-        `http://localhost:3000/questions/delete_question/${sub}/${id}`,
+        `${API_BASE_URL}/questions/delete_question/${sub}/${id}`,
         {
           method: "DELETE",
           headers: {
@@ -139,7 +139,7 @@ const handleStatus = async (index) => {
 
   try {
     const token = localStorage.getItem("token");
-    const res = await fetch("http://localhost:3000/questions/update_status", {
+    const res = await fetch(`${API_BASE_URL}/questions/update_status`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

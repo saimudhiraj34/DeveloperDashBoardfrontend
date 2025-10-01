@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import NavBar from "../NavBar/NavBar";
 import Title from "../Title/Title";
 import { ToastContainer, toast } from 'react-toastify';
+import { API_BASE_URL } from '../../config';
 const Syllabus = () => {
   const Navigate=useNavigate();
   const [categories, setCategories] = useState({});
@@ -21,7 +22,7 @@ const Syllabus = () => {
     const fetchCategories = async () => {
       const token=localStorage.getItem("token");
       try {
-        const res = await fetch("http://localhost:3000/syllabus/all_skills", {
+        const res = await fetch(`${API_BASE_URL}/syllabus/all_skills`, {
             method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -58,7 +59,7 @@ const Syllabus = () => {
       .filter((s) => s.length > 0);
       const token=localStorage.getItem("token")
        try {
-          const res = await fetch("http://localhost:3000/syllabus/add_skill", {
+          const res = await fetch(`${API_BASE_URL}/syllabus/add_skill`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -93,7 +94,7 @@ const handleDelete = async() => {
   }
   const token=localStorage.getItem("token");  
   try{
-    const res=await fetch("http://localhost:3000/syllabus/delete_skill",{
+    const res=await fetch(`${API_BASE_URL}/syllabus/delete_skill`,{
     method:"DELETE",
     headers:{
       "Content-Type":"application/json",

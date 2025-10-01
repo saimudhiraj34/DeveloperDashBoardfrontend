@@ -7,6 +7,7 @@ import "./Profile.css"
 import NavBar from "../NavBar/NavBar";
 import Title from "../Title/Title";
 import { ToastContainer, toast } from 'react-toastify';
+import { API_BASE_URL } from "../../config";
 
 
  
@@ -19,7 +20,7 @@ const Profile = () => {
   const handleLogout=async()=>{
      try{
       const token=localStorage.getItem("token");
-      const response=await fetch("http://localhost:3000/user/logout",{
+      const response=await fetch(`${API_BASE_URL}/user/logout`,{
         method:"POST",
         headers:{
           "Content-Type":"application/json",
@@ -41,7 +42,7 @@ const Profile = () => {
  const fetchAllTasks = async () => {
   const token = localStorage.getItem("token");
   try {
-    const response = await fetch("http://localhost:3000/work/get", {
+    const response = await fetch(`${API_BASE_URL}/work/get`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -72,7 +73,7 @@ const Profile = () => {
  const fetchProfile = async () => {
       const token = localStorage.getItem("token");
       try {
-        const res = await fetch("http://localhost:3000/user/get", {
+        const res = await fetch(`${API_BASE_URL}/user/get`, {
           method: "GET",
           headers: {
             Authorization: `Bearer ${token}`,
