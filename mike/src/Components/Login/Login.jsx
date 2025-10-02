@@ -59,7 +59,7 @@ const Login = () => {
           username:user.username,
           password:user.password
         }),
-        credentials: "include",
+           credentials: "include"
       });
       const data = await response.json();
       if (response.ok) {
