@@ -44,6 +44,7 @@ const DashBoard = () => {
       const res = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND}/syllabus/all_skills`, {
         method: "GET",
         headers: { Authorization: `Bearer ${token}` },
+         credentials: "include"
       });
 
       const resData = await res.json();
