@@ -6,7 +6,7 @@ import Title from "../Title/Title";
 import "./Imp_dates.css"; // Default styles
 import NotificationPopup from "../Notification/NotificationPopup";
 import { BringToFront } from "lucide-react";
-import { API_BASE_URL } from "../../config";
+
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -21,7 +21,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
   const fetchDates = async () => {
     const token = localStorage.getItem("token");
-    const res = await fetch(`${API_BASE_URL}/imp/get`, {
+    const res = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND}/imp/get`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     const data = await res.json();
@@ -32,11 +32,11 @@ import 'react-toastify/dist/ReactToastify.css';
   const handleDelete = async (id) => {
     const token = localStorage.getItem("token");
     try {
-      const res = await fetch(`${API_BASE_URL}/imp/delete/${id}`, {
+      const res = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND}/imp/delete/${id}`, {
         method: "Delete",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`, // optional
+          Authorization: `Bearer ${token}`, 
         },
       });
 

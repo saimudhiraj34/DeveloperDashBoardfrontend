@@ -4,7 +4,7 @@ import NavBar from "../NavBar/NavBar";
 import Title from "../Title/Title";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
-import { API_BASE_URL } from "../../config";
+
 
  const Project_section = () => {
   const [projects, setProjects] = useState([]); // store all projects
@@ -13,7 +13,7 @@ import { API_BASE_URL } from "../../config";
   // Fetch all projects
   const fetchProjects = async () => {
     try {
-      const res = await fetch(`${API_BASE_URL}/project/get`, {
+      const res = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND}/project/get`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -30,7 +30,7 @@ import { API_BASE_URL } from "../../config";
   // Fetch progress for a specific project
   const fetchProgress = async (title) => {
     try {
-      const res = await fetch(`${API_BASE_URL}/pro/${title}`, {
+      const res = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND}/pro/${title}`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -57,7 +57,7 @@ import { API_BASE_URL } from "../../config";
 
   const handleDelete=async(id)=>{
         try {
-      const res = await fetch(`${API_BASE_URL}/project/${id}`, {
+      const res = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND}/project/${id}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,

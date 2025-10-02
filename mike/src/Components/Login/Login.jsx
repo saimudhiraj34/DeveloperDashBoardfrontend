@@ -4,7 +4,7 @@ import { useState } from "react";
 import {useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import Title from "../Title/Title";
-import { API_BASE_URL } from "../../config";
+
 const Login = () => {
    const navigate=useNavigate()
     const [isLoginActive, setIsLoginActive] = useState(false);
@@ -19,7 +19,7 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const res = await fetch(`${API_BASE_URL}/user/register`, {
+      const res = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND}/user/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -50,7 +50,7 @@ const Login = () => {
   const handlelogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`${API_BASE_URL}/user/login`, {
+      const response = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND}/user/login`, {
         method: "POST",
         headers: {
           "content-Type": "application/json",

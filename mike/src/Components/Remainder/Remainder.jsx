@@ -3,7 +3,7 @@ import NavBar from "../NavBar/NavBar";
 import Title from "../Title/Title";
 import "./Remainder.css";
 import { ToastContainer, toast } from 'react-toastify';
-import { API_BASE_URL } from "../../config";
+
 
  const Remainder = () => {
   const [remainderList, setRemainderList] = useState([]);
@@ -40,7 +40,7 @@ import { API_BASE_URL } from "../../config";
     
   try {
     const token = localStorage.getItem("token");
-    const res = await fetch(`${API_BASE_URL}/imp/send`, {
+    const res = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND}/imp/send`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -65,7 +65,7 @@ import { API_BASE_URL } from "../../config";
     setRemainderList(updatedList);
     try {
     const token = localStorage.getItem("token");
-    const res = await fetch(`${API_BASE_URL}/remainder/update_status`, {
+    const res = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND}/remainder/update_status`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -97,7 +97,7 @@ import { API_BASE_URL } from "../../config";
 
     const token = localStorage.getItem("token");
     try {
-      const res = await fetch(`${API_BASE_URL}/remainder/set`, {
+      const res = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND}/remainder/set`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -128,7 +128,7 @@ import { API_BASE_URL } from "../../config";
   const handleDelete = async (id) => {
     const token = localStorage.getItem("token");
     try {
-      const res = await fetch(`${API_BASE_URL}/remainder/delete/${id}`, {
+      const res = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND}/remainder/delete/${id}`, {
         method: "Delete",
         headers: {
           "Content-Type": "application/json",
@@ -160,7 +160,7 @@ import { API_BASE_URL } from "../../config";
   const fetchData = async () => {
     const token = localStorage.getItem("token");
     try {
-      const resReminders = await fetch(`${API_BASE_URL}/remainder/get`, {
+      const resReminders = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND}/remainder/get`, {
         method: "GET",
         headers: { Authorization: `Bearer ${token}` },
       });

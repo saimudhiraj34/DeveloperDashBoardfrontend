@@ -4,7 +4,7 @@ import NavBar from "../NavBar/NavBar";
 import Title from "../Title/Title";
 import { FaTrash } from "react-icons/fa";
 import { useEffect } from "react";
-import { API_BASE_URL } from "../../config";
+
 import { ToastContainer, toast } from 'react-toastify';
 
 const Notes = () => {
@@ -21,7 +21,7 @@ const Notes = () => {
     }
      const token = localStorage.getItem("token");
     try {
-      const res = await fetch(`${API_BASE_URL}/note/add_title`, {
+      const res = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND}/note/add_title`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -50,7 +50,7 @@ const Notes = () => {
   
     const token = localStorage.getItem("token");
     try {
-      const res = await fetch(`${API_BASE_URL}/note/add_ans`, {
+      const res = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND}/note/add_ans`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -76,7 +76,7 @@ const Notes = () => {
   const handleDelete = async (id) => {
     const token = localStorage.getItem("token");
     try {
-      const res = await fetch(`${API_BASE_URL}/note/delete/${id}`, {
+      const res = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND}/note/delete/${id}`, {
         method: "Delete",
         headers: {
           "Content-Type": "application/json",
@@ -100,7 +100,7 @@ const Notes = () => {
   const fetchNotes = async () => {
     const token = localStorage.getItem("token");
     try {
-      const res = await fetch(`${API_BASE_URL}/note/get`, {
+      const res = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND}/note/get`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,

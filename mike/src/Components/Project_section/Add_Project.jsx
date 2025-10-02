@@ -6,7 +6,7 @@ import NavBar from "../NavBar/NavBar";
 import Title from "../Title/Title";
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
-import { API_BASE_URL } from "../../config";
+
 
 const Add_Project = () => {
   const [projectTitle, setProjectTitle] = useState("");
@@ -44,7 +44,7 @@ const Add_Project = () => {
       description,
     };
  try {
-    const res = await fetch(`${API_BASE_URL}/project/add`, {
+    const res = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND}/project/add`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -2,7 +2,7 @@
   import "./NavBar.css";
   import { Link } from "react-router-dom";
   import { useEffect } from "react";
-  import { API_BASE_URL } from "../../config";
+
 
 const NavBar = () => {
     const [profile, setProfile] = useState();
@@ -10,7 +10,7 @@ const NavBar = () => {
     const fetchProfile = async () => {
       const token = localStorage.getItem("token");
       try {
-        const res = await fetch(`${API_BASE_URL}/user/get`, {
+        const res = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND}/user/get`, {
           method: "GET",
           headers: {
             Authorization: `Bearer ${token}`,

@@ -7,7 +7,7 @@ import { FaTrash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { ToastContainer, toast } from 'react-toastify';
-import { API_BASE_URL } from "../../config";
+
  const WorkDone = () => {
   
   const [active, setActive] =   useState("Today");
@@ -28,7 +28,7 @@ import { API_BASE_URL } from "../../config";
     setTaskList(updatedTaskList);
    try{
     const token=localStorage.getItem("token")
-    const res=await fetch(`${API_BASE_URL}/work/check`,{
+    const res=await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND}/work/check`,{
       method:"POST",
       headers:{
       "Content-Type":"application/json",
@@ -56,7 +56,7 @@ import { API_BASE_URL } from "../../config";
   const handleSubmit = async(e) => {
     e.preventDefault();
     const token=localStorage.getItem("token");
-     const res = await fetch(`${API_BASE_URL}/work/task`, {
+     const res = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND}/work/task`, {
       method: "POST",
       headers: { 
         "Content-Type": "application/json" ,
@@ -78,7 +78,7 @@ import { API_BASE_URL } from "../../config";
   const fetchTasks = async () => {
     const token=localStorage.getItem("token");
   try {
-    const response = await fetch(`${API_BASE_URL}/work/getToday`,{
+    const response = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND}/work/getToday`,{
       method:"GET",
       headers:{
       "Content-Type":"application/json",
@@ -95,7 +95,7 @@ import { API_BASE_URL } from "../../config";
   const fetchAllTasks = async () => {
     const token=localStorage.getItem("token");
   try {
-    const response = await fetch(`${API_BASE_URL}/work/get`,{
+    const response = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND}/work/get`,{
       method:"GET",
       headers:{
       "Content-Type":"application/json",
@@ -118,7 +118,7 @@ useEffect(() => {
 const handleDelete = async(id) => {
   const token = localStorage.getItem("token");
   try {
-    const res = await fetch(`${API_BASE_URL}/work/task/${id}`, {
+    const res = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND}/work/task/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

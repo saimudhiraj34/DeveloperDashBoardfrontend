@@ -12,7 +12,7 @@ import { RiCalendarEventFill } from "react-icons/ri";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
-import { API_BASE_URL } from "../../config";
+
 
 const Project_detail = () => {
   const {title}=useParams();
@@ -47,7 +47,7 @@ const Project_detail = () => {
     }
     const newStatus = !progress[phase].status;
     try {
-      const res = await fetch(`${API_BASE_URL}/pro/check/${title}`, {
+      const res = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND}/pro/check/${title}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -79,7 +79,7 @@ const Project_detail = () => {
 
   const handleSaveans = async (phase) => {
     try {
-      const res = await fetch(`${API_BASE_URL}/pro/${title}`, {
+      const res = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND}/pro/${title}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -101,7 +101,7 @@ const Project_detail = () => {
 
   const fetchProgress = async () => {
     try {
-      const res = await fetch(`${API_BASE_URL}/pro/${title}`, {
+      const res = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND}/pro/${title}`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -126,7 +126,7 @@ const Project_detail = () => {
 
   const fetchProjectByTitle = async (title) => {
     try {
-      const res = await fetch(`${API_BASE_URL}/project/get/${title}`, {
+      const res = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND}/project/get/${title}`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,

@@ -5,7 +5,8 @@ import NavBar from "../NavBar/NavBar";
 import Title from "../Title/Title";
 import { useEffect } from "react";
 import { ToastContainer, toast } from 'react-toastify';
-import { API_BASE_URL } from "../../config";
+
+
  const Subject = () => {
   const { sub } = useParams();
   const [questions, setQuestions] = useState([]);
@@ -16,7 +17,7 @@ import { API_BASE_URL } from "../../config";
   const fetchQuestions = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch(`${API_BASE_URL}/questions/${sub}`, {
+      const res = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND}/questions/${sub}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -54,7 +55,7 @@ import { API_BASE_URL } from "../../config";
     setQuest("");
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch(`${API_BASE_URL}/questions/add_question`, {
+      const res = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND}/questions/add_question`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -87,7 +88,7 @@ import { API_BASE_URL } from "../../config";
     setQuestions(ansupdate);
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch(`${API_BASE_URL}/questions/save_answer`, {
+      const res = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND}/questions/save_answer`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -111,7 +112,7 @@ import { API_BASE_URL } from "../../config";
     try {
       const token = localStorage.getItem("token");
       const res = await fetch(
-        `${API_BASE_URL}/questions/delete_question/${sub}/${id}`,
+        `${import.meta.env.VITE_REACT_APP_BACKEND}/questions/delete_question/${sub}/${id}`,
         {
           method: "DELETE",
           headers: {
@@ -139,7 +140,7 @@ const handleStatus = async (index) => {
 
   try {
     const token = localStorage.getItem("token");
-    const res = await fetch(`${API_BASE_URL}/questions/update_status`, {
+    const res = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND}/questions/update_status`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
