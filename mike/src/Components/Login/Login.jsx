@@ -9,6 +9,7 @@ const Login = () => {
    const navigate=useNavigate()
     const [isLoginActive, setIsLoginActive] = useState(false);
     const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
     const [user,setuser]=useState({
       username:"",
       password:"",
@@ -18,7 +19,7 @@ const Login = () => {
 })
   const handleRegistration = async (e) => {
     e.preventDefault();
-
+   
     try {
       const res = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND}/user/register`, {
         method: "POST",
@@ -47,9 +48,13 @@ const Login = () => {
       console.error("Error:", err);
       toast.success("Server error, try again later");
     }
+    finally {
+      setLoading(false); // 🔹 stop loader
+    }
   };
   const handlelogin = async (e) => {
     e.preventDefault();
+      setLoading(true);
     try {
       const response = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND}/user/login`, {
         method: "POST",
@@ -81,6 +86,9 @@ const Login = () => {
       }
     } catch (error) {  
       console.error("Login error:",error.message);
+    }
+    finally {
+      setLoading(false); // 🔹 stop loader
     }
   };
 
@@ -157,7 +165,7 @@ const handleChange=(e)=>{
 
             {/* Submit */}
             <div  className="animation" style={{ "--i": 2 }}>
-              <button className="btn"type="submit">Login</button>
+              <button className="btn"type="submit" disabled={loading}> {loading ? "Logging in..." : "Login"}</button>
               <p>
               <a href="#" className="register-btn"onClick={(e) => { 
                 e.preventDefault();    
@@ -166,11 +174,12 @@ const handleChange=(e)=>{
               </p>
             </div>
           </form>
+           {loading && <div className="loader"></div>}
         </div>
         <div className={`info-text login animation ${isLoginActive?"active":""}`}>
         <h1>Welcome To </h1>
         <h1>Developer DashBoard </h1>      
-  
+       
         </div>
         <div className="form-box register">
           <h2 className="animation"style={{ "--i":4 }}><strong className="stronglogin">Sign Up</strong></h2>

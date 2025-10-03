@@ -36,7 +36,7 @@ const Syllabus = () => {
         } 
          
       } catch (err) {
-        console.error(err);
+        console.error();
         alert("Server error while fetching categories");
       }
     };

@@ -13,7 +13,7 @@ import { ToastContainer } from "react-toastify";
 const DashBoard = () => {
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
-
+  const [loading, setLoading] = useState(false);
   const [progressSections, setProgressSections] = useState([]);
 
 
@@ -39,6 +39,7 @@ const DashBoard = () => {
     fetchProjects();
   }, []);
   const fetchDashboard = async () => {
+       setLoading(true);
     try {
       const token = localStorage.getItem("token");
       const res = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND}/syllabus/all_skills`, {
@@ -71,7 +72,10 @@ const DashBoard = () => {
         setProgressSections(sections);
       }
     } catch (err) {
-      console.error(err);
+      console.error();
+    }
+    finally {
+      setLoading(false); // 🔹 stop loader
     }
   };
 
@@ -185,6 +189,7 @@ const DashBoard = () => {
                         ))}
                       </div>
                     </div>
+                     {loading && <div className="loader"></div>}
                   </div>
                 </div>
               ))
