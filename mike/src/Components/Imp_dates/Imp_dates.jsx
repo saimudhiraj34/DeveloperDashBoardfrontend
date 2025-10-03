@@ -98,7 +98,7 @@ import 'react-toastify/dist/ReactToastify.css';
       new Date(notification.Date).toDateString() === date.toDateString()
   ).length === 0 ? (
     <div className="notification-img">
-    <img src="src/assets/notification.jpg" alt="No tasks available" />
+    <img src="src/assets/notification.jpg" height="300px" alt="No tasks available" />
     </div>
   ) : (
     <div className="notifications-list">
@@ -109,7 +109,7 @@ import 'react-toastify/dist/ReactToastify.css';
         )
         .map((notification, index) => (
           <div key={index} className="notification-box">
-            <h3>{new Date(notification.Date).toLocaleDateString()}</h3>
+            <h4>{new Date(notification.Date).toLocaleDateString()}</h4>
             <p>{notification.message}</p>
             <button onClick={()=>{handleDelete(notification._id)}} className="notification-btn" >Delete</button>
           </div>

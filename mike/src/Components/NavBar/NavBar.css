@@ -11,7 +11,7 @@
     align-items: center;
     justify-content: center;
     background-color:#020815; /* Dark background */
-    padding: 10px 20px;
+    padding:5px 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
     position: sticky;
     top: 0;
@@ -26,7 +26,7 @@
     display: flex;
     list-style: none;
     gap: 25px;
-    font-size: 20px;
+    font-size: 15px;
     font-weight: 500;
     justify-content: space-evenly;
     margin: 0;
@@ -109,14 +109,17 @@
 /* Mobile styles */
 @media screen and (max-width:756px) {
     .Navbarheader{
-        width:380px;
+        width:400px;
         overflow-x: scroll;
         display: flex;
-        font-size: small;
-        height: 30px;
+        font-size:large;
+        height:40px;
+        justify-content: flex-start;
     }
     .Navbarlist{
         font-size: small;
+        display: flex;
+        justify-content: flex-start;
     }
     
   

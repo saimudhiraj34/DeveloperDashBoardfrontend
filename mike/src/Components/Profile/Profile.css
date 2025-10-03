@@ -1,6 +1,6 @@
 /* Container alignment */
 .react-calendar-heatmap {
-  width: 1600px;
+  width:1200px;
   margin: 20px auto;
   background: gray; 
   color: black;/* light grey background */
@@ -34,7 +34,7 @@
 }
 
 .profile-card {
-  width: 380px;
+  width: 280px;
   padding: 16px;
   margin: 20px auto;
   border-radius: 12px;
@@ -42,7 +42,7 @@
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
-.profile-card h1{
+.profile-card h2{
     color: #13628d;
 }
 .profile-name {

@@ -4,9 +4,9 @@
     height: 80vh;
 }
 .notes-sidebar{
-    width:500px;
+    width:400px;
     height:90vh;
-    background-color: #282727;
+    background-color: #000000;
     overflow-y: scroll;
     display: flex;
     align-items: center;
@@ -14,24 +14,27 @@
 }
 .notes-sidebar h3{
     color:white;
-    font-size: 30px;
+    font-size: 20px;
 }
 .notename{
-    padding: 10px;
-    width: 80%;
+    padding:5px;
+    width: 60%;
     height: 30px;
-    font-size: larger;
+    font-size:15px;
     border-radius: 5px;
 }
 .notes-input{
     display: flex;
     gap: 10px;
 }
-.notes-sidebar button{
-    padding: 10px;
+.notes-sidebar button{    
     width: 60px;
     border-radius: 5px;
-    font-size: larger;
+    font-size: large;
+}
+#notes-add-btn{
+    font-size:small;
+    padding: 2px;
 }
 .notes-area{
     display: flex;
@@ -49,13 +52,17 @@
     font-size:25px;
 
 }
+#note-save-btn{
+    padding: 3px;
+    width: 90px;
+}
 .note-item button{
     margin-top:15px;
     border-radius:8px;
-    width:80%;
-    font-size: larger;
+    width:70%;
+    font-size: large;
     font-style: oblique;
-    padding: 10px;
+    padding:5px;
 }
 .note-item{
     display: flex;
@@ -70,7 +77,7 @@
 .notes-out button{
     padding: 10px;
     width: 120px;
-    font-size: larger;
+    font-size:large;
 }
 .notes-list{
     background-color: black;
@@ -78,8 +85,8 @@
     margin-top: 10px;
     
 }
-FaTrash{
-    size: 20px;
+.FaTrash{
+    size: 10px;
 }
 @media screen and (max-width: 768px){
     .notes-sidebar{

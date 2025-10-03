@@ -145,7 +145,7 @@ const Notes = () => {
                   }
                 }}
             ></input>
-            <button onClick={handleSave}>Add</button>
+            <button id="notes-add-btn" onClick={handleSave}>Add</button>
           </div>
           <div className="notes-list">
             {notes.map((note, idx) => (
@@ -160,7 +160,7 @@ const Notes = () => {
                 </button>
                 <FaTrash
                   className="note-delete"
-                  size={40}
+                  size={30}
                   onClick={() => {handleDelete(note._id)}}
                   style={{
                     cursor: "pointer",
@@ -184,7 +184,7 @@ const Notes = () => {
                   value={tempdes}
                   onChange={(e) => settempdes(e.target.value)}
                 ></textarea>
-                <button onClick={() => handleSavedes(opennotes,notes[opennotes]._id)}>Save</button>
+                <button id="note-save-btn"onClick={() => handleSavedes(opennotes,notes[opennotes]._id)}>Save</button>
               </>
             )}
           </div>

@@ -101,7 +101,7 @@ const DashBoard = () => {
 
   return (
     <>
-      <ToastContainer position="top-center" autoClose={3000} />
+      <ToastContainer position="top-center" autoClose={1000} />
       <div className="body">
         <Title />
         <NavBar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
@@ -120,29 +120,29 @@ const DashBoard = () => {
                     </div>
                     <div className="ProgressBox">
                       <div className="ProgressBoxCircle">
-                        <svg className="progress-ring" width="180" height="180">
+                        <svg className="progress-ring" width="120" height="125">
                           <circle
                             className="progress-ring__background"
                             stroke="#eee"
-                            strokeWidth="10"
+                            strokeWidth="6"
                             fill="transparent"
-                            r="85"
-                            cx="90"
-                            cy="90"
+                            r="48"
+                            cx="55"
+                            cy="60"
                           />
                           <circle
                             className="progress-ring__circle"
                             stroke="#00c6ff"
-                            strokeWidth="10"
+                            strokeWidth="6"
                             fill="transparent"
-                            r="85"
-                            cx="90"
-                            cy="90"
-                            strokeDasharray={2 * Math.PI * 80}
+                            r="48"
+                            cx="55"
+                            cy="60"
+                            strokeDasharray={2 * Math.PI *48}
                             strokeDashoffset={
                               2 *
                               Math.PI *
-                              80 *
+                              48 *
                               (1 -
                                 section.items.reduce(
                                   (a, i) => a + i.completed,
@@ -209,7 +209,7 @@ const DashBoard = () => {
                   section.items
                     .filter((item) => item.completed > 0)
                     .map((item, iIdx) => {
-                      const svgSize = 210; // outer SVG width/height
+                      const svgSize =130; // outer SVG width/height
                       const strokeWidth = 24;
                       const radius = (svgSize - strokeWidth) / 2;
                       const circumference = 2 * Math.PI * radius;
@@ -231,7 +231,7 @@ const DashBoard = () => {
                               {/* Background circle */}
                               <circle
                                 stroke="white"
-                                strokeWidth={10}
+                                strokeWidth={6}
                                 fill="transparent"
                                 r={radius}
                                 cx={svgSize / 2}
@@ -240,7 +240,7 @@ const DashBoard = () => {
                               {/* Progress circle */}
                               <circle
                                 stroke="#00c6ff"
-                                strokeWidth={10}
+                                strokeWidth={6}
                                 background="transparent"
                                 fill="transparent"
                                 r={radius}

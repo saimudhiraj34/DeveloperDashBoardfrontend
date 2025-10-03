@@ -191,7 +191,7 @@ import { toast, ToastContainer } from "react-toastify";
             {schedule[activeDate].length === 0 ? (
               <>
               <div className="notification-img">
-              <img src="src/assets/schedule.png" height="600px"width="1100px" alt="No tasks available" />
+              <img src="src/assets/schedule.png" height="400px"width="800px" alt="No tasks available" />
                 <p>No Schedule</p>
               </div>
             
@@ -240,7 +240,7 @@ import { toast, ToastContainer } from "react-toastify";
             {schedule[activeDate].length === 0 ? (
              <>
               <div className="notification-img">
-              <img src="src/assets/schedule.png" height="600px"width="1100px" alt="No tasks available" />
+              <img src="src/assets/schedule.png" height="400px"width="800px" alt="No tasks available" />
                 <p>No Schedule</p>
               </div>
             
@@ -289,7 +289,7 @@ import { toast, ToastContainer } from "react-toastify";
             {schedule[activeDate].length === 0 ? (
                <>
               <div className="notification-img">
-              <img src="src/assets/schedule.png" height="600px"width="1100px" alt="No tasks available" />
+              <img src="src/assets/schedule.png" height="400px"width="800px" alt="No tasks available" />
                 <p>No Schedule</p>
               </div>
             
@@ -338,7 +338,7 @@ import { toast, ToastContainer } from "react-toastify";
             {schedule[activeDate].length === 0 ? (
              <>
               <div className="notification-img">
-              <img src="src/assets/schedule.png" height="600px"width="1100px" alt="No tasks available" />
+              <img src="src/assets/schedule.png" height="400px"width="800px" alt="No tasks available" />
                 <p>No Schedule</p>
               </div>
             
@@ -387,7 +387,7 @@ import { toast, ToastContainer } from "react-toastify";
             {schedule[activeDate].length === 0 ? (
               <>
               <div className="notification-img">
-              <img src="src/assets/schedule.png" height="600px"width="1100px" alt="No tasks available" />
+              <img src="src/assets/schedule.png" height="400px"width="800px" alt="No tasks available" />
                 <p>No Schedule</p>
               </div>
             
@@ -436,7 +436,7 @@ import { toast, ToastContainer } from "react-toastify";
             {schedule[activeDate].length === 0 ? (
              <>
               <div className="notification-img">
-              <img src="src/assets/schedule.png" height="600px"width="1100px" alt="No tasks available" />
+              <img src="src/assets/schedule.png" height="400px"width="800px" alt="No tasks available" />
                 <p>No Schedule</p>
               </div>
             
@@ -485,7 +485,7 @@ import { toast, ToastContainer } from "react-toastify";
             {schedule[activeDate].length === 0 ? (
               <>
               <div className="notification-img">
-              <img src="src/assets/schedule.png" height="600px"width="1100px" alt="No tasks available" />
+              <img src="src/assets/schedule.png" height="400px"width="800px" alt="No tasks available" />
                 <p>No Schedule</p>
               </div>
             

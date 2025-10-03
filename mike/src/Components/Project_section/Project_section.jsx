@@ -98,7 +98,7 @@ import { ToastContainer, toast } from 'react-toastify';
       <NavBar />
 
       <div className="container">
-        <h1>Project Progress Tracker</h1>
+        <h2>Project Progress Tracker</h2>
 
         <div className="progress-container-out">
           {projects.length>0?(

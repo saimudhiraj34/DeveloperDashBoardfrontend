@@ -2,11 +2,13 @@
      width: 100%;
      display: flex;
      justify-content: center ;
+     height:45px;
+     font-size: small;
 }
 .subjects-container {
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;  /* ✅ allow natural left alignment */
+    width:80%;
+     display: flex;
+    justify-content:center;  /* ✅ allow natural left alignment */
     gap: 20px;
     overflow-x:scroll;             /* auto is better than scroll */
     scrollbar-width: none;
@@ -19,30 +21,33 @@
 }
 
 .syllabus-input{
+    margin-top: 10px;
     width:100%;
     display: flex;
-    height: 40px;
+    height:30px;
     justify-content: center;
-    margin-bottom: 20px;
+
     border-radius:12px;
+    align-items: center;
 }
 .syllabus-input-name{
     width: 300px;
-    height: 45px;
+    height:30px;
     padding: auto;
     margin-right: 30px;
-    font-size: larger;
+    font-size:small;
 }
 .Skills{
-    width:400px;
+    width:160px;
     border: 2px solid white;
-    height:100%
+    height:70%
 }
 .skills-heading{
    display: flex;
     justify-content: center;
     width: 100%;
-    height:40px;
+    height:30px;
+    font-size: small;
 }
 .buttons{
     display: flex;
@@ -51,13 +56,15 @@
 }
 
 .button{
+    width:90%;
     background-color: #0c62cb;
     color: white;
     border-radius: 5px;
-    margin: 10px;
-    padding: 10px;
+    margin:8px;
+    padding:10px;
     border: none;
     cursor: pointer;
+    text-overflow: clip;
 }
 .Add_syllabus{
     display: flex;
@@ -68,24 +75,28 @@
    width:100%;
    display:flex;
    justify-content: center;
-   margin-top:20px;
+   font-size: small;
 }
 .syllabus-delete-input{
     width: 100%;
     display:flex;
     justify-content: center;
     gap: 10px;
+    
 }
 .delete-input{
-    padding:15px;
-    font-size: larger;
+    padding:8px;
+    font-size:small;
     border-radius: 10px;
+    border: 2px solid white;
+    cursor: pointer;
   
 }
 .syllabus-button-btn{
-    width: 100px;
-    height:50px;
-    font-size: larger;
+    width:50px;
+    height:40px;
+    font-size: small;
+    border: 2px solid white;
 }
 .syllabus-button-btn2{
     width: 200px;

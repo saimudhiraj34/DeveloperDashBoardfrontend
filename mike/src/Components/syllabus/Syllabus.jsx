@@ -126,7 +126,7 @@ return (
     <NavBar/>
    
     <div className='syllabus-container'>
-        <h1 >Syllabus</h1>
+        <h2 >Syllabus</h2>
     </div>
     <div className='syllabus-input'>
     <input
@@ -157,7 +157,7 @@ return (
         {Object.entries(categories).map(([category, skills]) => (
           <div className="Skills" key={category}>
             <div className="skills-heading">
-              <h2>{category.toUpperCase()}</h2>
+              <h3>{category.toUpperCase()}</h3>
             </div>
             <div className="buttons">
               {skills.map((skill, index) => (

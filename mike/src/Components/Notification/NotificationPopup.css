@@ -15,9 +15,9 @@
 .popup-box {
   background: white;
   color: black;
-  padding: 20px;
+  padding:5px;
   border-radius: 12px;
-  width: 350px;
+  width: 250px;
   max-width: 90%;
   text-align: center;
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);

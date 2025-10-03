@@ -178,7 +178,7 @@ const handleDelete = async(id) => {
         <div className="WorkDone_Today">
           <div className="WorkDone_form">
             <form className="task-form" onSubmit={handleSubmit}>
-              <h1>Add_Task</h1>
+              <h2>Add_Task</h2>
               <div className="form-group">
                 <label>Date:</label>
                 <input
@@ -278,7 +278,7 @@ const handleDelete = async(id) => {
   </div>
 ) : (
   <div className="empty-state">
-    <img src="src/assets/task.png" height="800" width="1200"alt="No tasks available" />
+    <img src="src/assets/task.png" height="400" width="800"alt="No tasks available" />
     <p>No tasks added yet!</p>
   </div>
 )}
@@ -330,7 +330,7 @@ const handleDelete = async(id) => {
       <>
         {uniqueDates.map((date) => (
           <div key={date} className="date-box">
-            <h2 className="date-heading">{new Date(date).toLocaleDateString()}</h2>
+            <h3 className="date-heading">{new Date(date).toLocaleDateString()}</h3>
             <div className="tasks-list">
               {All_task
                 .filter((task) => task.date === date)

@@ -226,9 +226,9 @@ import { ToastContainer, toast } from 'react-toastify';
 
           {active === "Remainder" && (
             <form onSubmit={handleSubmit}>
-              <h1>
+              <h3>
                 Set <strong>Remainder</strong>
-              </h1>
+              </h3>
               <div className="remainder-alarm">
                 <label>
                   <b>What you want to remaind?</b>

@@ -109,10 +109,10 @@ useEffect(() => {
     <div>
    
     <div className="profile-card">
-         <h1>Personal Details</h1>
+         <h2>Personal Details</h2>
       {profile ? (
             <>
-              <h2 className="profile-name">{profile.username}</h2>
+              <h3 className="profile-name">{profile.username}</h3>
               <p className="profile-branch">Phone: {profile.phone}</p>
               <div className="profile-links">
                 <a href={profile.github} target="_blank" rel="noopener noreferrer">

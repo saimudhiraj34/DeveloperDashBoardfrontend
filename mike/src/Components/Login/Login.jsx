@@ -8,6 +8,7 @@ import Title from "../Title/Title";
 const Login = () => {
    const navigate=useNavigate()
     const [isLoginActive, setIsLoginActive] = useState(false);
+    const [error, setError] = useState("");
     const [user,setuser]=useState({
       username:"",
       password:"",
@@ -40,7 +41,7 @@ const Login = () => {
           github: ""
         });
       } else {
-        toast.success(data.message || "Registration failed");
+        toast.error(data.message || "Registration failed");
       }
     } catch (err) {
       console.error("Error:", err);
@@ -83,13 +84,41 @@ const Login = () => {
     }
   };
 
+const handleChangeregister=(e)=>{
+    const{name,value}=e.target;
+     if (name === "password") {
+      validatePassword(value);
+    }
+    setuser({...user,[name]:value});
+};
 const handleChange=(e)=>{
     const{name,value}=e.target;
     setuser({...user,[name]:value});
 };
+  const validatePassword = (password) => {
+    const minLength = 8;
+    const regexUpper = /[A-Z]/; // At least one uppercase
+    const regexLower = /[a-z]/; // At least one lowercase
+    const regexNumber = /[0-9]/; // At least one digit
+    const regexSpecial = /[@$!%*?&]/; // At least one special char
+
+    if (password.length < minLength) {
+      setError("Password must be at least 8 characters long");
+    } else if (!regexUpper.test(password)) {
+      setError("Password must include at least one uppercase letter");
+    } else if (!regexLower.test(password)) {
+      setError("Password must include at least one lowercase letter");
+    } else if (!regexNumber.test(password)) {
+      setError("Password must include at least one number");
+    } else if (!regexSpecial.test(password)) {
+      setError("Password must include at least one special character (@, $, !, %, *, ?, &)");
+    } else {
+      setError(""); // ✅ All checks passed
+    }
+  };
   return (
     <>
-    <ToastContainer position="top-center" autoClose={3000} />
+    <ToastContainer position="top-center" autoClose={1000} />
     <div className="Login-container">
   
       <div className={`Wrapper animation ${isLoginActive ? "active" : ""}`}>
@@ -146,13 +175,16 @@ const handleChange=(e)=>{
         <div className="form-box register">
           <h2 className="animation"style={{ "--i":4 }}><strong className="stronglogin">Sign Up</strong></h2>
           <form onSubmit={handleRegistration}>
+             {error && <p style={{ color: "red", size:"20px" }}>{error}</p>}
             {/* Name */}
-            <div  className="inputbox animation"style={{ "--i":3 }}>              
+            <div  className="inputbox animation"style={{ "--i":3 }}>   
+                            
               <input             
                 type="text"
                 id="username"
                 name="username"
-                onChange={handleChange}   
+                 placeholder="Unique UserId" 
+                onChange={handleChangeregister}   
                 value={user.username}   
                 required
               />
@@ -163,10 +195,12 @@ const handleChange=(e)=>{
                 type="password"
                 id="password"
                 name="password"
-                onChange={handleChange}   
-                value={user.password}                
+                onChange={handleChangeregister}   
+                value={user.password} 
+                            
                 required
               />
+             
                <label   htmlFor="password">Password:</label>
             </div>
             <div className="inputbox  animation"style={{ "--i": 4 }}>             
@@ -174,7 +208,7 @@ const handleChange=(e)=>{
                 type="tel"
                 id="phone"
                 name="phone"
-                onChange={handleChange}   
+                onChange={handleChangeregister}   
                 value={user.phone}                
                 required
               />
@@ -188,7 +222,7 @@ const handleChange=(e)=>{
                 type="url"
                 id="linkedin"
                 name="linkedin"
-                onChange={handleChange}   
+                onChange={handleChangeregister}   
                 value={user.linkedin} 
             ></input>
               <label  htmlFor="linkedin">LinkedIn:</label>
@@ -199,7 +233,7 @@ const handleChange=(e)=>{
               <input                
                 id="github"
                 name="github"
-                 onChange={handleChange}   
+                 onChange={handleChangeregister}   
                 value={user.github}                 
               />
                <label htmlFor="github">GitHub:</label>

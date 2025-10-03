@@ -73,8 +73,8 @@ p.subtitle {
 }
 
 .step .circle {
-  width: 40px;
-  height: 40px;
+  width:30px;
+  height:30px;
   border-radius: 50%;
   background-color: #ddd;
   display: flex;
@@ -121,7 +121,7 @@ p.subtitle {
 .features {
   text-align: left;
   background-color: black;
-  padding: 20px;
+ 
   border-radius: 8px;
   box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
 }
@@ -161,7 +161,8 @@ p.subtitle {
 .progress-container-inner {
   border: 2px solid #00c6ff; 
   margin-right: 20px;
-  width:760px;   
+  width:600px; 
+  height:180px;  
   margin-top:10px;    /* fixed width so it won't shrink */
   flex-shrink: 0;     /* prevents shrinking */
 }
@@ -183,12 +184,7 @@ p.subtitle {
   justify-content: center;
   margin-top: 10px;
 }
-.phase-tracker {
-  display: flex;
-  justify-content: space-between;
-  margin: 20px 0;
-  position: relative;
-}
+
 
 /* Base gray line */
 .progress-line {
@@ -216,14 +212,14 @@ p.subtitle {
 .phase-tracker {
   display: flex;
   justify-content: space-between;
-  margin: 20px 0;
+
   position: relative;
 }
 
 /* Base gray line */
 .progress-line {
   position: absolute;
-  top: 30px; /* align with circles */
+  top:15px; /* align with circles */
   left: 0;
   right: 0;
   height: 4px;
@@ -235,7 +231,7 @@ p.subtitle {
 /* Green progress line */
 .progress-line-fill {
   position: absolute;
-  top: 30px; /* align with circles */
+  top:15px; /* align with circles */
   left: 0;
   height: 4px;
   background-color: #28a745; /* green */
@@ -253,8 +249,8 @@ p.subtitle {
 }
 
 .phase .circle {
-  width: 60px;
-  height: 60px;
+  width:40px;
+  height:40px;
   border-radius: 50%;
   margin: auto;
   background: #ccc;
@@ -268,7 +264,7 @@ p.subtitle {
 .phase.completed .circle {
   background: green;
   border-color: green;
-  border: 2px solid white;
+  border: 3px solid white;
 }
 
 .phase.current .circle {
@@ -286,7 +282,7 @@ p.subtitle {
   font-size: 14px;
 }
 .projectdeletebtn{
-  padding: 11px;
+  padding:8px;
   width:90px;
   border-radius:6px;
   margin-left: 10px;

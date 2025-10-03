@@ -171,7 +171,7 @@ const handleStatus = async (index) => {
       <NavBar />
       <div className="subject-outer">
         <div className="subject-container">
-          <h1>{sub}</h1>
+          <h2>{sub}</h2>
           <div className="input-container">
             <label>Enter Your Question :</label>
             <input
@@ -193,7 +193,7 @@ const handleStatus = async (index) => {
         </div>
         <div className="ques-list">
           <div className="quest-list-in">
-            <h1>Question</h1>
+            <h2>Question</h2>
             {questions.map(({ id, text }, index) => (
               <div key={id} className="outer-ans">
                 <div className="ans-box">
@@ -206,7 +206,7 @@ const handleStatus = async (index) => {
                     onChange={() => {handleStatus(index) }}
                   />
                   <button
-                    className="quest-btn"
+                    className="quest-btn" id="quest-btn"
                     onClick={() => {
                       handletoggle(index);
                     }}
@@ -239,6 +239,7 @@ const handleStatus = async (index) => {
                           Save
                         </button>
                         <button
+                        className="quest-delete-btn"
                           onClick={() => {
                             handleDelete(id);
                           }}
