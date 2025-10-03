@@ -18,6 +18,7 @@ const Login = () => {
       github:""
 })
   const handleRegistration = async (e) => {
+     setLoading(true);
     e.preventDefault();
    
     try {
@@ -259,6 +260,7 @@ const handleChange=(e)=>{
               </p>
             </div>
           </form>
+          {loading && <div className="loader"></div>}
         </div>
           <div className="info-text register animation" >
           <h1>Register Your Details</h1>
