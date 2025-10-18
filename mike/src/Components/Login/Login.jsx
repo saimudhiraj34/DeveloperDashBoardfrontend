@@ -1,274 +1,276 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Login.css";
-import { useState } from "react";
-import {useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from 'react-toastify';
-import Title from "../Title/Title";
+import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 
 const Login = () => {
-   const navigate=useNavigate()
-    const [isLoginActive, setIsLoginActive] = useState(false);
-    const [error, setError] = useState("");
-    const [loading, setLoading] = useState(false);
-    const [user,setuser]=useState({
-      username:"",
-      password:"",
-      phone:"",
-      linkedin:"",
-      github:""
-})
+  const navigate = useNavigate();
+  const [isLoginActive, setIsLoginActive] = useState(true);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [user, setUser] = useState({
+    username: "",
+    password: "",
+    phone: "",
+    linkedin: "",
+    github: "",
+  });
+
+  // ===== Register Handler =====
   const handleRegistration = async (e) => {
-     setLoading(true);
     e.preventDefault();
-   
+    setLoading(true);
     try {
-      const res = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND}/user/register`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(user)
-      });
+      const res = await fetch(
+        `${import.meta.env.VITE_REACT_APP_BACKEND2}/user/register`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(user),
+        }
+      );
 
       const data = await res.json();
-      console.log("Response:", data);
-
       if (data.success) {
         toast.success("User registered successfully!");
-        setuser({
+        setUser({
           username: "",
           password: "",
           phone: "",
           linkedin: "",
-          github: ""
+          github: "",
         });
+        setIsLoginActive(true);
       } else {
         toast.error(data.message || "Registration failed");
       }
     } catch (err) {
       console.error("Error:", err);
-      toast.success("Server error, try again later");
-    }
-    finally {
-      setLoading(false); // 🔹 stop loader
+      toast.error("Server error, try again later");
+    } finally {
+      setLoading(false);
     }
   };
-  const handlelogin = async (e) => {
+
+  // ===== Login Handler =====
+  const handleLogin = async (e) => {
     e.preventDefault();
-      setLoading(true);
+    setLoading(true);
     try {
-      const response = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND}/user/login`, {
-        method: "POST",
-        headers: {
-          "content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          username:user.username,
-          password:user.password
-        }),
-           credentials: "include"
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_REACT_APP_BACKEND}/user/login`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          credentials: "include",
+          body: JSON.stringify({
+            username: user.username,
+            password: user.password,
+          }),
+        }
+      );
+
       const data = await response.json();
       if (response.ok) {
         localStorage.setItem("token", data.token);
-        setuser({
-          username:"",
-          password:""
-        })
-        toast.success("Login successfully");
+        toast.success("Login successful");
         navigate("/DashBoard");
       } else {
-          setuser({
-          username:"",
-          password:""
-        })
-       toast.error("Invalid credentials");
-        navigate("/");
+        toast.error("Invalid credentials");
       }
-    } catch (error) {  
-      console.error("Login error:",error.message);
-    }
-    finally {
-      setLoading(false); // 🔹 stop loader
+    } catch (err) {
+      console.error("Login error:", err.message);
+    } finally {
+      setLoading(false);
     }
   };
 
-const handleChangeregister=(e)=>{
-    const{name,value}=e.target;
-     if (name === "password") {
-      validatePassword(value);
-    }
-    setuser({...user,[name]:value});
-};
-const handleChange=(e)=>{
-    const{name,value}=e.target;
-    setuser({...user,[name]:value});
-};
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUser({ ...user, [name]: value });
+  };
+
+  // ===== Password Validation =====
   const validatePassword = (password) => {
     const minLength = 8;
-    const regexUpper = /[A-Z]/; // At least one uppercase
-    const regexLower = /[a-z]/; // At least one lowercase
-    const regexNumber = /[0-9]/; // At least one digit
-    const regexSpecial = /[@$!%*?&]/; // At least one special char
+    const regexUpper = /[A-Z]/;
+    const regexLower = /[a-z]/;
+    const regexNumber = /[0-9]/;
+    const regexSpecial = /[@$!%*?&]/;
 
-    if (password.length < minLength) {
-      setError("Password must be at least 8 characters long");
-    } else if (!regexUpper.test(password)) {
-      setError("Password must include at least one uppercase letter");
-    } else if (!regexLower.test(password)) {
-      setError("Password must include at least one lowercase letter");
-    } else if (!regexNumber.test(password)) {
-      setError("Password must include at least one number");
-    } else if (!regexSpecial.test(password)) {
-      setError("Password must include at least one special character (@, $, !, %, *, ?, &)");
-    } else {
-      setError(""); // ✅ All checks passed
-    }
+    if (password.length < minLength)
+      return setError("Password must be at least 8 characters long");
+    if (!regexUpper.test(password))
+      return setError("Password must include at least one uppercase letter");
+    if (!regexLower.test(password))
+      return setError("Password must include at least one lowercase letter");
+    if (!regexNumber.test(password))
+      return setError("Password must include at least one number");
+    if (!regexSpecial.test(password))
+      return setError(
+        "Password must include at least one special character (@, $, !, %, *, ?, &)"
+      );
+
+    setError("");
   };
+
   return (
     <>
-    <ToastContainer position="top-center" autoClose={1000} />
-    <div className="Login-container">
-  
-      <div className={`Wrapper animation ${isLoginActive ? "active" : ""}`}>
-     
-        <span className="bg_animate"></span>
-       
-        <span className="bg_animate2"></span>
-     
-        <div className="form-box login">
-       <h2 className="animation" style={{ "--i": 0 }}><strong className="stronglogin">Login</strong>page</h2>
-          <form onSubmit={handlelogin}>
-            {/* Name */}
-            <div  className="inputbox animation"style={{ "--i": 1 }}>              
-              <input             
-                type="text"
-                id="username"
-                name="username" 
-                placeholder="Unique UserId" 
-                value={user.username} 
-                onChange={handleChange}   
-                required
-              />
-              <label   htmlFor="name">Name:</label>
-            </div>
-                 <div className="inputbox  animation"style={{ "--i":2 }}>             
-              <input             
-                type="password"
-                id="password"
-                name="password"
-                onChange={handleChange}   
-                value={user.password}                
-                required
-              />
-               <label   htmlFor="password">Password:</label>
-            </div>         
+      <ToastContainer position="top-center" autoClose={1500} />
+      <div className="Login-container">
+        <div className="Wrapper">
+          {/* ===== Logo Box (auto handled in CSS pseudo) ===== */}
+          {isLoginActive ? (
+            <form onSubmit={handleLogin}>
+              <h2>
+                <strong>Welcome Back</strong>
+              </h2>
+              <p>Enter your credentials to access your account</p>
 
-            {/* Submit */}
-            <div  className="animation" style={{ "--i": 2 }}>
-              <button className="btn"type="submit" disabled={loading}> {loading ? "Logging in..." : "Login"}</button>
+              <div className="inputbox">
+                <label htmlFor="username">Email</label>
+                <input
+                  type="text"
+                  id="username"
+                  name="username"
+                  placeholder="user@gmail.com"
+                  value={user.username}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+
+              <div className="inputbox">
+                <label htmlFor="password">Password</label>
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  placeholder="••••••••"
+                  value={user.password}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+
+              <a href="#">Forgot password?</a>
+
+              <button type="submit" className="btn" disabled={loading}>
+                {loading ? "Signing in..." : "Sign In"}
+              </button>
+
               <p>
-              <a href="#" className="register-btn"onClick={(e) => { 
-                e.preventDefault();    
-                setIsLoginActive(true); 
-              }}>Register</a>
+                Don’t have an account?{" "}
+                <a
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setIsLoginActive(false);
+                  }}
+                >
+                  Sign up
+                </a>
               </p>
-            </div>
-          </form>
-           {loading && <div className="loader"></div>}
-        </div>
-        <div className={`info-text login animation ${isLoginActive?"active":""}`}>
-        <h1>Welcome To </h1>
-        <h1>Developer DashBoard </h1>      
-       
-        </div>
-        <div className="form-box register">
-          <h2 className="animation"style={{ "--i":4 }}><strong className="stronglogin">Sign Up</strong></h2>
-          <form onSubmit={handleRegistration}>
-             {error && <p style={{ color: "red", size:"20px" }}>{error}</p>}
-            {/* Name */}
-            <div  className="inputbox animation"style={{ "--i":3 }}>   
-                            
-              <input             
-                type="text"
-                id="username"
-                name="username"
-                 placeholder="Unique UserId" 
-                onChange={handleChangeregister}   
-                value={user.username}   
-                required
-              />
-              <label   htmlFor="name">Name:</label>
-            </div>
-            <div className="inputbox  animation"style={{ "--i":3}}>             
-              <input             
-                type="password"
-                id="password"
-                name="password"
-                onChange={handleChangeregister}   
-                value={user.password} 
-                            
-                required
-              />
-             
-               <label   htmlFor="password">Password:</label>
-            </div>
-            <div className="inputbox  animation"style={{ "--i": 4 }}>             
-              <input             
-                type="tel"
-                id="phone"
-                name="phone"
-                onChange={handleChangeregister}   
-                value={user.phone}                
-                required
-              />
-               <label   htmlFor="phone">Phone:</label>
-            </div>
+            </form>
+          ) : (
+            <form onSubmit={handleRegistration}>
+              <h2>
+                <strong>Create Account</strong>
+              </h2>
+              <p>Fill in the details to register</p>
 
-            {/* LinkedIn */}
-            <div  className="inputbox  animation"style={{ "--i":4}}>
-            
-              <input
-                type="url"
-                id="linkedin"
-                name="linkedin"
-                onChange={handleChangeregister}   
-                value={user.linkedin} 
-            ></input>
-              <label  htmlFor="linkedin">LinkedIn:</label>
-            </div>
+              {error && <p style={{ color: "red" }}>{error}</p>}
 
-            {/* GitHub */}
-            <div  className="inputbox  animation"style={{ "--i":3 }}>             
-              <input                
-                id="github"
-                name="github"
-                 onChange={handleChangeregister}   
-                value={user.github}                 
-              />
-               <label htmlFor="github">GitHub:</label>
-            </div>
+              <div className="inputbox">
+                <label htmlFor="username">Username</label>
+                <input
+                  type="text"
+                  id="username"
+                  name="username"
+                  placeholder="Unique UserId"
+                  value={user.username}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
 
-            {/* Submit */}
-            <div  className="animation" style={{ "--i":4 }}>
-              <button className="btn"type="submit">Register</button>
-              <p>!Account ?
-              <a href="#" className="register-btn"onClick={(e) => { 
-                e.preventDefault();
-                setIsLoginActive(false); 
-              }}>Login</a>
+              <div className="inputbox">
+                <label htmlFor="password">Password</label>
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  placeholder="••••••••"
+                  value={user.password}
+                  onChange={(e) => {
+                    handleChange(e);
+                    validatePassword(e.target.value);
+                  }}
+                  required
+                />
+              </div>
+
+              <div className="inputbox">
+                <label htmlFor="phone">Phone</label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  placeholder="1234567890"
+                  value={user.phone}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+
+              <div className="inputbox">
+                <label htmlFor="linkedin">LinkedIn</label>
+                <input
+                  type="url"
+                  id="linkedin"
+                  name="linkedin"
+                  placeholder="https://linkedin.com/in/username"
+                  value={user.linkedin}
+                  onChange={handleChange}
+                />
+              </div>
+
+              <div className="inputbox">
+                <label htmlFor="github">GitHub</label>
+                <input
+                  type="url"
+                  id="github"
+                  name="github"
+                  placeholder="https://github.com/username"
+                  value={user.github}
+                  onChange={handleChange}
+                />
+              </div>
+
+              <button type="submit" className="btn" disabled={loading}>
+                {loading ? "Registering..." : "Sign Up"}
+              </button>
+
+              <p>
+                Already have an account?{" "}
+                <a
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setIsLoginActive(true);
+                  }}
+                >
+                  Login
+                </a>
               </p>
-            </div>
-          </form>
+            </form>
+          )}
+
           {loading && <div className="loader"></div>}
         </div>
-          <div className="info-text register animation" >
-          <h1>Register Your Details</h1>
-        </div>
-           
       </div>
-    </div>
     </>
   );
 };
+
 export default Login;
